@@ -19,9 +19,9 @@ const MarketPlace: React.FC = () => {
 
 
   return (
-    // <div className="flex flex-col h-full w-full bg-transparent">
+    <div className="flex flex-col h-full w-full bg-transparent">
 
-    <div className="w-full min-h-screen overflow-y-auto bg-transparent relative">
+    {/* // <div className="w-full min-h-screen overflow-y-auto bg-transparent relative"> */}
 
       {/* Top Panel */}
       {/* <TopPanel /> */}

@@ -1,12 +1,12 @@
 import React from "react";
-import ContactInformation from "../Components/OtherComponents/ContactInformation";
+import CheckoutInformation from "../Components/OtherComponents/CheckoutInformation";
 
 
 const Checkout: React.FC = () => {
 
     return (
         <div className="flex flex-col h-screen w-full overflow-hidden">
-            <ContactInformation />
+            <CheckoutInformation />
         </div>
 
     );

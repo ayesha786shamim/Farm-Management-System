@@ -71,7 +71,7 @@ const Sidebar: React.FC = () => {
 
 
                 {/* Logo and title part*/}
-                <div className="px-5 py-9 border-b border-[#D1D5DB] ">
+                <div className="px-5 py-7 border-b border-[#D1D5DB] ">
 
                     <div className="max-w-screen flex items-center justify-center space-x-3">
 

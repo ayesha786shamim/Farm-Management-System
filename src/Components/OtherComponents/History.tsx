@@ -46,7 +46,7 @@ const MarketplaceOrderHistory = () => {
         <div className="bg-Background_Color">
 
             {/* Main */}
-            <div className="px-2 sm:p-6 ">
+            <div className="px-3">
 
                 <div className="w-[full] bg-white rounded-2xl border border-gray shadow-sm">
 
@@ -67,7 +67,7 @@ const MarketplaceOrderHistory = () => {
                                 <select
                                     value={searchName}
                                     onChange={(e) => setSearchName(e.target.value)}
-                                    className="w-full appearance-none py-[6px] pr-6 pl-3 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
+                                    className="w-full appearance-none py-[6px] px-2 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
                                 >
                                     <option value="">Search by Product</option>
                                     <option value="fertilizer">Fertilizer</option>
@@ -85,7 +85,7 @@ const MarketplaceOrderHistory = () => {
                                 <select
                                     value={searchStatus}
                                     onChange={(e) => setSearchStatus(e.target.value)}
-                                    className="w-full appearance-none bg-transparent py-[6px] pr-6 pl-3 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
+                                    className="w-full appearance-none bg-transparent py-[6px] px-2 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
                                 >
                                     <option value="">Search by status</option>
                                     <option value="shipped">Shipped</option>
@@ -103,7 +103,7 @@ const MarketplaceOrderHistory = () => {
                                 <select
                                     value={searchId}
                                     onChange={(e) => setSearchId(e.target.value)}
-                                    className="w-full appearance-none bg-transparent py-[6px] pr-6 pl-3 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
+                                    className="w-full appearance-none bg-transparent py-[6px] px-2 text-[12px] font-Montserrat font-medium text-Gray focus:outline-none"
                                 >
                                     <option value="">Search by ID</option>
                                     <option value="12345PM">12345PM</option>
@@ -134,11 +134,11 @@ const MarketplaceOrderHistory = () => {
                     </div>
 
                     {/* Table */}
-                    <div className=" pt-5 pb-20">
+                    <div className=" pt-5 pb-20 px-3">
 
                         <div className="flex justify-center">
 
-                            <div className="rounded-2xl overflow-hidden border border-gray shadow-sm w-[1003px] h-[250px] sm:w-[1003px]">
+                            <div className="rounded-2xl overflow-hidden border border-gray shadow-sm w-[1003px] h-[250px]">
 
                                 <table className="w-full">
 

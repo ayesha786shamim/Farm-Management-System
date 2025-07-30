@@ -496,7 +496,7 @@ import StatusDialog from './StatusDialog';
 import { Info, ChevronDown } from 'lucide-react';
 
 
-const ContactInformation: React.FC = () => {
+const CheckoutInformation: React.FC = () => {
 
     const navigate = useNavigate();
 
@@ -537,8 +537,10 @@ const ContactInformation: React.FC = () => {
         navigate(-1);
     };
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -577,7 +579,7 @@ const ContactInformation: React.FC = () => {
                 MarketPlace
             </h1> */}
 
-            <div className="flex justify-center">
+            <div className="flex justify-center px-4">
 
 
                 <form onSubmit={handleSubmit} className="w-[1042px] bg-white rounded-2xl border border-gray shadow  px-6">
@@ -977,5 +979,5 @@ const ContactInformation: React.FC = () => {
 
 };
 
-export default ContactInformation;
+export default CheckoutInformation;
 

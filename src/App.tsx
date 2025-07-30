@@ -8,7 +8,7 @@ import Lands from './Pages/Lands';
 import Sidebar from './Components/CommonComponents/Sidebar';
 import ProductDetail from './Pages/ProductDetail';
 import { CartProvider } from './Context/CartContext';
-import Checkout from './Components/OtherComponents/ContactInformation';
+import Checkout from './Components/OtherComponents/CheckoutInformation';
 import OrderHistory from './Pages/OrderHistory';
 import Inventory from './Pages/Inventory';
 import TopPanel from './Components/CommonComponents/TopPanel';
@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
           <Sidebar />
 
-          <div className="w-full flex-1 flex flex-col overflow-hidden bg-Background_Color">
+          <div className="w-full flex-1 flex flex-col overflow-auto bg-Background_Color">
 
             <TopPanel/>
 

@@ -52,7 +52,7 @@ const Categories: React.FC = () => {
 
 
     return (
-        <div className="container mx-auto pl-4 pr-4 pb-8">
+        <div className="container mx-auto pl-4 pr-4 pb-4">
 
 
             {/* Title
@@ -77,7 +77,7 @@ const Categories: React.FC = () => {
 
                         setActiveCategory(category);
 
-                        setVisibleCount(5);
+                        // setVisibleCount(10);
 
                     }}
                 />
@@ -113,6 +113,7 @@ const Categories: React.FC = () => {
                     <span className="text-[16px] font-bold">→</span>
                 </button>
             </div> */}
+
 
             {/*  Load More Button */}
             {visibleCount < filteredProducts.length && (

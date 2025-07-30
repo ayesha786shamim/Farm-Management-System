@@ -82,41 +82,50 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
             {/* Image */}
             <div className={`flex justify-center items-center 
                     ${fromCategoryComponent
-                    ? "py-[20px]"
-                    : "py-[4px]"
+                    ? "py-[16px]"
+                    : "py-[2px]"
                 }`}
             >
                 <img
                     src={imageUrl}
                     alt={title}
-                    className="h-[91px] w-[84px] object-cover rounded-md"
+                    className={`rounded-md object-contain
+                    ${fromCategoryComponent
+                            ? "h-[91px] w-[84px] "
+                            : "h-[85px] w-[74px] "
+                        }`}
                 />
             </div>
 
 
             {/* Title */}
-            <div className="text-center mt-0 relative">
+            <div className="h-[35px] px-1 flex items-center justify-center text-center">
 
-                <h3 className={`font-Montserrat font-semibold text-Black truncate
-                        ${fromCategoryComponent
-                        ? "text-[16px]  "
-                        : "text-[18px]"
-                    }`}
+                <h3
+                    className={`font-Montserrat font-semibold text-Black 
+                    ${fromCategoryComponent
+                            ? "text-[16px]"
+                            : "text-[16px]"
+                        } 
+                    overflow-hidden leading-tight`}
                 >
                     {title}
                 </h3>
+
 
             </div>
 
 
             {/* Price */}
-            <div className="text-center relative pt-0">
+            <div className="text-center relative pt-1">
                 <p
                     className={`font-Montserrat font-bold  
+
                         ${fromCategoryComponent
                             ? "text-Forest_Green text-[14px] text-left "
                             : "text-Gray text-[10px] pb-2"
                         }`}
+
                 >
                     PKR : {price}
                 </p>
