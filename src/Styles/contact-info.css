@@ -1,0 +1,46 @@
+.input-base {
+    @apply w-full rounded px-1 py-1 text-[12px] font-semibold text-Black font-Montserrat focus:outline-none focus:ring-0;
+}
+
+.input-h2 {
+    @apply text-[18px] font-Montserrat font-bold text-Golden
+}
+
+.input-labelInformationDetails {
+    @apply text-[12px] text-Gray font-Montserrat font-normal;
+}
+
+
+.input-labelTable {
+    @apply text-[12px] text-[#5C5C5C] font-Montserrat font-normal;
+}
+
+.input-labelShippingDetails {
+    @apply text-[10px] text-Black font-Montserrat font-semibold;
+}
+
+
+.input-p {
+    @apply text-[16px] font-semibold text-Black font-Montserrat text-Black
+}
+
+.input-placeholder {
+    @apply placeholder:text-[10px] placeholder:text-Input_Text placeholder:font-normal;
+}
+
+.input-filled {
+    @apply bg-white border border-Input_Border;
+}
+
+.input-empty {
+    @apply bg-Input_Bg border border-Input_Border;
+}
+
+.btn-ConfirmOrder {
+    @apply w-full bg-Forest_Green hover:bg-green-700 text-white;
+}
+
+
+.btn-Cancel {
+    @apply w-full border text-Golden hover:bg-Forest_Green hover:text-white border-Forest_Green;
+}

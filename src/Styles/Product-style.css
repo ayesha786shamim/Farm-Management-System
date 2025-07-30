@@ -1,0 +1,28 @@
+.input-font {
+    @apply font-Montserrat;
+}
+
+.input-fontPoppins {
+    @apply font-Poppins;
+}
+
+.input-fontBold {
+    @apply font-bold;
+}
+
+.input-font-semibold {
+    @apply font-semibold;
+}
+
+.input-font-normal {
+    @apply font-normal;
+}
+
+
+.input-textForestGreen {
+    @apply text-Forest_Green;
+}
+
+.input-fontBG{
+    @apply bg-[#DFDFDF66]
+}
