@@ -1,30 +1,33 @@
-import React from 'react';
-import CartItemCard from './CartItem';
-import { CartItem } from '../../Context/CartContext';
+import React, { useContext } from 'react';
+import CartItemCard from './CartItemCard';
+import { CartContext } from '../../Context/CartContext';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 
-interface CartDrawerProps {
-    isOpen: boolean;
-    onClose: () => void;
-    cartItems: CartItem[];
-    updateQuantity: (id: number, quantity: number) => void;
-    removeFromCart: (id: number) => void;
-}
 
-const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cartItems, updateQuantity, }) => {
+
+const CartDrawer: React.FC = () => {
 
     const navigate = useNavigate();
 
-    if (!isOpen)
+    const cartContext = useContext(CartContext);
+
+    if (!cartContext) return null;
+
+    const { openCart, closeCart, isCartOpen, cart, cartCount } = cartContext;
+
+
+    if (!isCartOpen) {
         return null;
+    }
 
-    const subtotal = cartItems.reduce((sum, item) => {
+    let subtotal = 0;
 
-        const price = item.price;
-        const quantity = item.quantity;
-        return sum + price * quantity;
+    for (const item of cart) {
 
-    }, 0);
+        subtotal += item.price * item.quantity;
+
+    }
+
 
 
     const deliveryFee = 1000;
@@ -32,55 +35,53 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cartItems, upd
     const total = subtotal + deliveryFee;
 
     return (
-        <div className="fixed inset-0 z-50 flex justify-end">
-
-            {/* Backdrop */}
-            <div className="flex-1 bg-black bg-opacity-40"
-                onClick={onClose}>
-            </div>
-
+        <div className="fixed inset-0 z-50 flex justify-end bg-black bg-opacity-60">
 
             {/* Drawer */}
-            <div className="w-[356px] bg-white h-full flex flex-col shadow-3xl shadow-Forest_Green overflow-hidden ">
+            <div className="w-[346px] bg-white h-full flex flex-col rounded-tl-[26px] rounded-bl-[26px] ">
 
 
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200
-                ">
-                    <h2 className="text-lg font-semibold text-Forest_Green font-Montserrat">
-                        Cart ({cartItems.length})
+                <div className="flex justify-between pl-3 py-2 border-b border-gray-200 shadow-md">
+
+                    <h2 className="text-[20px] font-semibold text-Forest_Green font-Montserrat">
+                        Cart ({cartCount})
                     </h2>
 
                     <button
-                        onClick={onClose}
-                        className="text-Gray hover:text-Black text-2xl font-bold w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100"
+                        onClick={closeCart}
+                        className="text-Gray hover:text-Black text-2xl font-bold w-8 h-8 flex items-center 
+                        justify-center rounded hover:bg-gray-100"
                     >
                         ×
                     </button>
 
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 overflow-y-auto">
-                    <div className="p-4">
-                        <h3 className="font-semibold text-Black font-Montserrat mb-4">Products</h3>
+                {/* Product displayy */}
+                <div className="flex-1 overflow-y-auto scrollbar-hide ">
 
-                        {cartItems.length === 0 ? (
-                            <div className="text-center py-12">
+                    <div className="pl-4 ">
 
-                                <p className="text-Gray text-lg font-Montserrat">Cart is empty</p>
+                        <h3 className="py-5 text-[20px] font-semibold text-Black font-Montserrat ">Products</h3>
 
+                        {cart.length === 0 ? (
+
+                            <div className="text-center ">
+                                <p className="text-Forest_Green text-[18px] font-Montserrat font-bold ">Cart is empty</p>
                             </div>
+
                         ) : (
+
                             <div className="space-y-0">
 
-                                {cartItems.map(item => (
+                                {cart.map((item) => (
+
                                     <CartItemCard
-                                        key={item.id}
                                         item={item}
-                                        updateQuantity={updateQuantity}
-                                        isSingleItem={cartItems.length === 1}
+                                        isSingleItem={cart.length === 1}
                                     />
+
                                 ))}
 
                             </div>
@@ -88,43 +89,48 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cartItems, upd
                     </div>
 
                     {/* Foot */}
-                    {cartItems.length > 0 && (
-                        <div className="p-4 space-y-4 bg-white">
+                    {cart.length > 0 && (
+                        <div className=" sticky absolute p-4 space-y-3 bg-white border-t border-gray-200  
+                        bottom-0 rounded-bl-[26px]">
 
-                            <div className="space-y-2 text-[16px] font-semibold font-Montserrat text-Black">
+                            <div className="space-y-2 font-semibold font-Montserrat text-Black">
+
                                 <div className="pb-8 flex justify-between">
-                                    <span>Sub total</span>
-                                    <span>PKR {subtotal}</span>
+
+                                    <span className='text-[16px] '>Sub total</span>
+
+                                    <span className='text-[14px]'>PKR. {subtotal}</span>
+
                                 </div>
 
                                 <div className="flex justify-between font-Montserrat font-bold text-[20px] text-Black">
-                                    <span>Total</span>
-                                    <span>PKR {total}</span>
+
+                                    <span className='text-[16px]'>Total</span>
+                                    <span className='text-[20px]'>PKR.  {total}</span>
+
                                 </div>
+
                             </div>
 
                             <button
                                 onClick={() => {
+
                                     navigate({
-
                                         pathname: '/MarketPlace/ProductDetail/Checkout',
-
-                                        search: `?total=${total}`,
-
-                                    }, {
-                                        state: { cartItems }
-                                    });
+                                        search: `?total=${total}&total-Products=${cartCount}`,
+                                    },)
                                 }}
-
-                                className="w-full bg-Forest_Green text-white py-3 rounded-full font-semibold font-Montserrat hover:bg-green-700 transition-colors"
+                                className="w-[333px] bg-Forest_Green text-white py-3 rounded-full font-semibold 
+                                font-Montserrat hover:bg-green-700 transition-colors text-[16px]"
                             >
                                 Check Out
                             </button>
 
 
                             <button
-                                onClick={onClose}
-                                className="w-full text-Golden py-2 rounded-full font-semibold font-Montserrat hover:bg-Forest_Green transition-colors border border-Gray"
+                                onClick={closeCart}
+                                className="w-[333px] text-Golden py-2 rounded-full font-semibold font-Montserrat text-[16px] 
+                                hover:bg-Forest_Green hover:text-white transition-colors border border-Forest_Green"
                             >
                                 View Cart
                             </button>
