@@ -13,7 +13,7 @@ const mockFarmProducts: Product[] = [
     title: "IFFCO Urea",
     price: 1210,
     image: "/images/Urea1.svg",
-    description: "High-quality nitrogen fertilizer for increased crop yield. Suitable for all soil types.",
+    description: "IFFCO Urea provides a concentrated nitrogen source that supports vigorous plant growth, especially during early vegetative stages. Ideal for cereals, pulses, and oilseeds.",
     category: "Fertilizer"
   },
   {
@@ -21,7 +21,7 @@ const mockFarmProducts: Product[] = [
     title: "DAP Fertilizer",
     price: 2250,
     image: "/images/Urea2.svg",
-    description: "Rich in nitrogen and phosphorus. Ideal for rice, wheat, and maize crops.",
+    description: "DAP (Di-Ammonium Phosphate) supplies essential phosphorus and nitrogen for strong root development and flowering. Suitable for early crop growth stages across various crops.",
     category: "Fertilizer"
   },
   {
@@ -29,7 +29,7 @@ const mockFarmProducts: Product[] = [
     title: "NPK Fertilizer",
     price: 320,
     image: "/images/Urea3.svg",
-    description: "Balanced water-soluble fertilizer suitable for vegetables, fruits, and flowers.",
+    description: "A balanced mix of nitrogen, phosphorus, and potassium to meet complete nutrient requirements. Excellent for home gardens, vegetables, flowers, and fruit-bearing plants.",
     category: "Fertilizer"
   },
   {
@@ -37,7 +37,7 @@ const mockFarmProducts: Product[] = [
     title: "Potash Fertilizer",
     price: 1800,
     image: "/images/Urea4.svg",
-    description: "Promotes root development and improves resistance to drought and disease.",
+    description: "Potash improves drought resistance, enhances crop color and taste, and strengthens plant cell walls for better yield quality. Great for sugarcane, potatoes, and vegetables.",
     category: "Fertilizer"
   },
   {
@@ -45,7 +45,7 @@ const mockFarmProducts: Product[] = [
     title: "Micronutrient",
     price: 220,
     image: "/images/Urea1.svg",
-    description: "Corrects zinc deficiency and improves crop quality and yield.",
+    description: "Formulated with zinc, boron, and iron to address hidden hunger in crops. Essential for enzyme activity, chlorophyll formation, and fruit quality in vegetables and grains.",
     category: "Pesticides"
   },
   {
@@ -53,7 +53,7 @@ const mockFarmProducts: Product[] = [
     title: "Calcium Nitrate",
     price: 260,
     image: "/images/Urea2.svg",
-    description: "Calcium and nitrate for fruit firmness and longer shelf life.",
+    description: "Dual nutrient formula for stronger cell walls and prevention of blossom end rot in tomatoes, peppers, and fruits. Improves overall fruit firmness and shelf life.",
     category: "Fertilizer"
   },
   {
@@ -61,7 +61,7 @@ const mockFarmProducts: Product[] = [
     title: "Magnesium Sulphate",
     price: 150,
     image: "/images/Urea3.svg",
-    description: "Essential micronutrient for chlorophyll formation and healthy plant growth.",
+    description: "Supplies magnesium and sulfur—vital for chlorophyll synthesis and protein formation. Recommended for leafy vegetables and fruit crops during active growth.",
     category: "Pesticides"
   },
   {
@@ -69,7 +69,7 @@ const mockFarmProducts: Product[] = [
     title: "Micronutrient",
     price: 180,
     image: "/images/Urea4.svg",
-    description: "Improves pollination, fruit setting, and root development.",
+    description: "Specially formulated to enhance pollination, improve flowering, and boost fruit setting. Ideal for fruit trees, cotton, and vegetable crops.",
     category: "Pesticides"
   },
   {
@@ -77,7 +77,7 @@ const mockFarmProducts: Product[] = [
     title: "Weed Detection Kit",
     price: 750,
     image: "/images/Urea1.svg",
-    description: "Handheld kit designed to help farmers identify and monitor weed presence in soil.",
+    description: "Compact and user-friendly toolkit to help farmers detect and analyze weed species. Useful for early intervention and precision weed management in farms.",
     category: "Weed"
   },
   {
@@ -85,7 +85,7 @@ const mockFarmProducts: Product[] = [
     title: "Bio Fertilizer",
     price: 320,
     image: "/images/Urea2.svg",
-    description: "Improves nitrogen fixation and promotes healthy root growth.",
+    description: "Eco-friendly microbial inoculant that improves soil health, enhances root biomass, and fixes atmospheric nitrogen. Ideal for sustainable farming practices.",
     category: "Fertilizer"
   },
   {
@@ -93,7 +93,7 @@ const mockFarmProducts: Product[] = [
     title: "Organic Manure",
     price: 950,
     image: "/images/Urea3.svg",
-    description: "Organic phosphorus source for improving soil structure and fertility.",
+    description: "Natural soil conditioner made from decomposed organic matter. Enriches soil texture, increases water retention, and boosts microbial activity.",
     category: "Fertilizer"
   },
   {
@@ -101,15 +101,15 @@ const mockFarmProducts: Product[] = [
     title: "Neem Coated Urea",
     price: 1245,
     image: "/images/Urea4.svg",
-    description: "Neem coated for slow nitrogen release and reduced nitrogen loss.",
+    description: "Slow-release nitrogen source treated with neem to reduce leaching and volatilization. Enhances nutrient uptake efficiency and reduces pest infestation.",
     category: "Fertilizer"
   },
-    {
+  {
     id: 13,
     title: "Glyphosate Herbicide",
     price: 130,
     image: "/images/Urea2.svg",
-    description: "Broad-spectrum herbicide for effective weed control in crops.",
+    description: "Non-selective systemic herbicide effective against annual and perennial weeds. Ideal for field preparation, post-harvest cleaning, and plantation crops.",
     category: "Weed"
   },
   {
@@ -117,7 +117,7 @@ const mockFarmProducts: Product[] = [
     title: "Glyphosate Herbicide",
     price: 130,
     image: "/images/Urea2.svg",
-    description: "Broad-spectrum herbicide for effective weed control in crops.",
+    description: "Fast-acting herbicide used to clear unwanted weeds in orchards, field bunds, and non-crop areas. Rainfast within hours of application.",
     category: "Weed"
   },
   {
@@ -125,7 +125,7 @@ const mockFarmProducts: Product[] = [
     title: "Atrazine Weed Killer",
     price: 145,
     image: "/images/Urea3.svg",
-    description: "Selective herbicide used for pre- and post-emergence weed control in corn and sugarcane.",
+    description: "Pre- and post-emergence herbicide offering long-lasting control of broadleaf and grassy weeds. Commonly used in sugarcane, maize, and sorghum crops.",
     category: "Weed"
   },
   {
@@ -133,16 +133,15 @@ const mockFarmProducts: Product[] = [
     title: "Pendimethalin",
     price: 350,
     image: "/images/Urea4.svg",
-    description: "Pre-emergent herbicide to control annual grasses and broadleaf weeds.",
+    description: "Selective pre-emergence herbicide forming a protective layer in the soil. Controls weeds in soybean, cotton, pulses, and vegetables effectively.",
     category: "Weed"
   },
-
   {
     id: 17,
     title: "Sulphur Fertilizer",
     price: 470,
     image: "/images/Urea1.svg",
-    description: "Improves oil content in oilseeds and protein synthesis in cereals.",
+    description: "Essential for protein synthesis and oil formation in crops. Enhances flavor and aroma in onion, garlic, and oilseed crops like mustard.",
     category: "Fertilizer"
   },
   {
@@ -150,7 +149,7 @@ const mockFarmProducts: Product[] = [
     title: "Ferrous Sulphate",
     price: 135,
     image: "/images/Urea2.svg",
-    description: "Micronutrient supplement for preventing iron deficiency in crops.",
+    description: "Soluble iron supplement to treat iron chlorosis in crops. Promotes greener leaves and better photosynthesis in turf, citrus, and paddy fields.",
     category: "Pesticides"
   },
   {
@@ -158,7 +157,7 @@ const mockFarmProducts: Product[] = [
     title: "Herbicide Sprayer",
     price: 1650,
     image: "/images/Urea2.svg",
-    description: "Portable sprayer designed for effective herbicide application in weed management.",
+    description: "Ergonomic and portable sprayer compatible with most herbicide solutions. Provides uniform coverage and reduces chemical waste during application.",
     category: "Weed"
   },
   {
@@ -166,11 +165,11 @@ const mockFarmProducts: Product[] = [
     title: "Tricho Fungicide",
     price: 300,
     image: "/images/Urea4.svg",
-    description: "Biological fungicide for seed and soil-borne disease control.",
+    description: "Biological control agent containing Trichoderma spores. Protects crops from fungal pathogens like Fusarium, Rhizoctonia, and Pythium in soil and seeds.",
     category: "Pesticides"
   }
-
 ];
+
 
 export const getProducts = async (): Promise<Product[]> => {
 
