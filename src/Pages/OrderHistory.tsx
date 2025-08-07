@@ -1,5 +1,5 @@
 import React from 'react';
-import TopPanel from '../Components/CommonComponents/TopPanel';
+import TopPanel from '../Components/TopPanel/TopPanel';
 import History from '../Components/OtherComponents/History';
 
 
