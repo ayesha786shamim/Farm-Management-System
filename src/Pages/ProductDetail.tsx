@@ -1,66 +1,79 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import TopPanel from '../Components/CommonComponents/TopPanel';
-import ProductInfo from '../Components/CommonComponents/ProductInfo';
+import TopPanel from '../Components/TopPanel/TopPanel';
+import ProductInfo from '../Components/ProductDisplay/ProductInfo';
 import CartDrawer from '../Components/CartComponents/CartDrawer';
 import { CartContext } from '../Context/CartContext';
+import CartIcon from '../Components/CartComponents/CartIcon';
 
 const ProductDetail: React.FC = () => {
 
+
     const { state } = useLocation();
-
-    const [searchParams] = useSearchParams();
-
-    const productId = searchParams.get('id');
 
     const cartContext = useContext(CartContext);
 
-    if (!cartContext) return null;
+    useEffect(() => {
 
-    const {
-        cart,
-        isCartOpen,
-        closeCart,
-        updateQuantity,
-        removeFromCart
-    } = cartContext;
+        if (cartContext) {
+            cartContext.closeCart();
+        }
+    }, []);
 
 
-    if (!state || state.id.toString() !== productId) {
-        return (
-            <div className="p-6">
-                <TopPanel />
+    if (!cartContext) {
 
-                <p className="text-Black font-semibold text-lg">No product data found for ID: {productId}</p>
-            </div>
-        );
+        return null;
+
     }
 
 
+    // const cartContext = useContext(CartContext);
+
+    // if (!cartContext)
+    //     return null;
+
+    // const { cart } = cartContext;
+
     return (
-        <div className="flex flex-col w-full bg-transparent h-auto max-h-screen overflow-y-auto sm:overflow-y-visible scrollbar-hide">
+        <div className="flex flex-col w-full bg-transparent h-auto max-h-screen  scrollbar-hide">
+
 
             {/* <TopPanel /> */}
 
-            <div className="p-6">
-                <ProductInfo
-                    id={state.id}
-                    title={state.title}
-                    price={state.price}
-                    image={state.imageUrl}
-                    description={state.description}
-                    category={state.category}
-                />
+            {!state ? (
+                <div className="font-Montserrat font-bold text-[20px] 
+                text-Forest_Green flex justify-center items-center h-full">
+
+                    <p>Product not found</p>
+
+                </div>
+            ) : (
+
+                <div className="pt-0 pb-6 px-6">
+
+                    <ProductInfo
+
+                        id={state.id}
+                        title={state.title}
+                        price={state.price}
+                        image={state.imageUrl}
+                        description={state.description}
+                        category={state.category}
+
+                    />
+
+                </div>
+            )}
+
+            {/* <CartDrawer/> */}
+
+            {/* Cart Icon with Count */}
+            <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+                <CartIcon />
             </div>
 
 
-            <CartDrawer
-                isOpen={isCartOpen}
-                onClose={closeCart}
-                cartItems={cart}
-                updateQuantity={updateQuantity}
-                removeFromCart={removeFromCart}
-            />
         </div>
     );
 };
