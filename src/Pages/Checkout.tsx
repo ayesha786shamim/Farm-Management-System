@@ -5,8 +5,10 @@ import CheckoutInformation from "../Components/OtherComponents/CheckoutInformati
 const Checkout: React.FC = () => {
 
     return (
-        <div className="flex flex-col h-screen w-full overflow-hidden">
+        <div className="flex flex-col h-screen w-full  ">
+            
             <CheckoutInformation />
+
         </div>
 
     );
