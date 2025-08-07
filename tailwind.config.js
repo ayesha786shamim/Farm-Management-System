@@ -35,6 +35,7 @@ module.exports = {
         "gradient-custom-diagonal": "linear-gradient(45deg, #13783C, #38BE17)",
         "gradient-custom-opposite-diagonal": "linear-gradient(135deg, #13783C, #38BE17)",
       },
+      
     },
   },
   plugins: [],
