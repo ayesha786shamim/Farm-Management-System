@@ -1,101 +1,180 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode, useEffect, useMemo } from 'react';
 import { Product } from '../api/MockProduct';
+import { toast } from 'react-toastify';
 
 export interface CartItem extends Product {
     quantity: number;
 }
 
-interface CartContextType {
+interface CartContextProps {
+
     cart: CartItem[];
-    addToCart: (product: Product, quantity?: number) => void;
+    cartCount: number;
+    isCartOpen: boolean;
+
+    addToCart: (product: Product, quantity: number) => void;
     updateQuantity: (productId: number, quantity: number) => void;
     removeFromCart: (productId: number) => void;
-    cartCount: number;
-    totalQuantity: number;
-    isCartOpen: boolean;
     openCart: () => void;
     closeCart: () => void;
+
 }
 
-export const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 
-    const [cart, setCart] = useState<CartItem[]>([]);
+    // const [cart, setCart] = useState<CartItem[]>([]);
+
+    const [cart, setCart] = useState<CartItem[]>(() => {
+
+        const storedCart = localStorage.getItem('cart');
+
+        return storedCart ? JSON.parse(storedCart) : [];
+
+    });
+
+
+    useEffect(() => {
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }, [cart]);
+
 
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-    const addToCart = (product: Product, quantity: number = 1) => {
 
-        console.log('Adding product with ID:', product.id); 
 
-        const Price = Number(product.price);
+    // Add to cart function
+    const addToCart = (product: Product, quantity: number) => {
 
-        setCart(prevCart => {
+        console.log('Adding product with ID:', product.id);
 
-            const existingItem = prevCart.find(item =>
+        setCart((prevCart) => {
+
+            const ExistingProduct = prevCart.find((item) =>
 
                 item.id === product.id && item.title === product.title
-
             );
 
-            if (existingItem) {
+            if (ExistingProduct) {
 
-                console.log("Product already in cart");
+                console.log("Product already exist in the cart");
 
-                return prevCart.map(item =>
-
-                    item.id === product.id
-                        ? { ...item, quantity: item.quantity + quantity }
-                        : item
+                return prevCart.map((item) => {
+                    if (item.id === product.id) {
+                        return { ...item, quantity: item.quantity + quantity };
+                    } else {
+                        return item
+                    }
+                }
                 );
 
             } else {
 
-                console.log("New product, adding to cart");
-
-                return [...prevCart, { ...product, Price, quantity }];
-
+                console.log("Pr0duct added as new product");
+                // return [{ ...product, quantity }, ...prevCart];
+                console.log(prevCart);
+                return [...prevCart, { ...product, quantity }];
             }
         });
+        toast.success('Product added to cart!', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: 'light',
+            style: {
+                color: '#0F783B',
+                fontWeight: 'bold',
+            },
+        });
+
     };
 
+
+
+
+
+
+    // const updateQuantity = (productId: number, quantity: number) => {
+
+    //     setCart((prevCart) =>
+
+    //         prevCart.map((item) => {
+
+    //             if (item.id === productId) {
+
+    //                 return { ...item, quantity };  //if matches update the quantity 
+
+    //             } else {
+    //                 return item;
+    //             }
+    //         })
+    //     );
+    // };
 
 
     const updateQuantity = (productId: number, quantity: number) => {
 
-        setCart(prevCart =>
-            prevCart.map(item =>
-                item.id === productId ? { ...item, quantity } : item
-            )
-        );
+        setCart((prevCart) =>
 
-    };
+            prevCart.map((item) => {
+
+                if (item.id === productId) {
+
+                    return { ...item, quantity }
+
+                }
+                else {
+                    return item
+                }
+            })
+        )
+
+
+    }
+
     const removeFromCart = (productId: number) => {
-        // Ensure productId is a number
-        if (typeof productId !== 'number') {
 
-            console.error("Product ID for removal is not a number");
-            return;
-        }
+        setCart((prevCart) =>
 
-        setCart(prevCart => prevCart.filter(item => item.id !== productId));
-    };
+            prevCart.filter((item) =>
 
+                item.id !== productId
+            )
+        )
+    }
 
     const cartCount = cart.length;
 
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     const openCart = () => setIsCartOpen(true);
 
     const closeCart = () => setIsCartOpen(false);
 
+    const contextValue = useMemo(() => ({
+        cart,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+        cartCount,
+        isCartOpen,
+        openCart,
+        closeCart
+    }), [cart, cartCount, isCartOpen]);
+
+
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, updateQuantity,
-        removeFromCart, cartCount, totalQuantity, isCartOpen, openCart, closeCart }}>
+
+        <CartContext.Provider value={contextValue}>
             {children}
         </CartContext.Provider>
+
     );
 };
