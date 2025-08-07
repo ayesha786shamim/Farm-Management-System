@@ -1,5 +1,5 @@
 import React from 'react';
-import TopPanel from '../Components/CommonComponents/TopPanel';
+import TopPanel from '../Components/TopPanel/TopPanel';
 import AdminAddProduct from '../Components/AdminAddProduct';
 
 const MarketPlaceAdmin: React.FC = () => {
@@ -14,7 +14,7 @@ const MarketPlaceAdmin: React.FC = () => {
             {/* // <div className="w-full min-h-screen overflow-y-auto bg-transparent"> */}
 
             {/* Top Panel */}
-            <TopPanel />
+            {/* <TopPanel /> */}
 
             {/*Admin Add Product*/}
             <AdminAddProduct />
