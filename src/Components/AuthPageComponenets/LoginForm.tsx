@@ -32,6 +32,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+
       <h2 className="block text-[20px] text-Forest_Green font-Montserrat font-bold mb-6">Login</h2>
 
       <div>
@@ -41,7 +42,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           type="email"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
           required
         />
 
@@ -54,7 +55,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           type="password"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           required
         />
         
@@ -69,11 +70,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
 
       <p className="text-center text-[10px] text-Black font-Poppins font-bold mt-3">
         Don’t have an account?
+
         <button
           type="button"
           className="text-primary underline text-Forest_Green"
           onClick={onSwitchToSignup}
         >
+          
           Sign Up
         </button>
       </p>

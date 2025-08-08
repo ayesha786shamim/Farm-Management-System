@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import { useNavigate } from 'react-router-dom';
 
@@ -13,12 +11,12 @@ const RoleSelect: React.FC = () => {
 
         localStorage.setItem('selectedRole', role);
 
-        if (role == 'user') {
+        if (role === 'user') {
 
             navigate('/MarketPlace');
 
         } else {
-            
+
             navigate('/AuthPage');
 
         }

@@ -66,15 +66,12 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
 
           <input
             type="text"
-
             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-
             value={firstName}
-
             onChange={(e) => setFirstName(e.target.value)}
-
             required
           />
+
         </div>
 
         <div>
@@ -82,52 +79,54 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
           <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Last Name</label>
 
           <input
-
             type="text"
-
             className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-
             value={lastName}
-
-            onChange={(e) => setLastName(e.target.value)}
-
+            onChange={(event) => setLastName(event.target.value)}
             required
           />
+
         </div>
 
       </div>
 
       <div>
         <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Email</label>
+
         <input
           type="email"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
           required
         />
+
       </div>
 
       <div>
         <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Password</label>
+
         <input
           type="password"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           required
         />
+
       </div>
 
       <div>
         <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Confirm Password</label>
+
         <input
           type="password"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(event) => setConfirmPassword(event.target.value)}
           required
         />
+
       </div>
 
       <button

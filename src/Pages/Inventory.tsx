@@ -5,10 +5,10 @@ const Inventory: React.FC = () => {
 
 
     return (
-        <div className="flex flex-col h-full w-full overflow-y-auto bg-transparent">
+        <div className="flex flex-col w-full bg-transparent">
 
             <InventoryDetail/>
-            
+
         </div>
             
     );

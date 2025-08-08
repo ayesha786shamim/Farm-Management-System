@@ -45,10 +45,10 @@ const CartIcon: React.FC = () => {
             {isCartOpen &&
                 <CartDrawer />
             }
-            
+
         </div>
 
     );
 };
 
-export default React.memo(CartIcon);
+export default CartIcon;

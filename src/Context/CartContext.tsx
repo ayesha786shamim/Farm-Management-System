@@ -144,14 +144,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     }
 
-    const contextValue = useMemo(() => ({
-        cart, addToCart, updateQuantity, removeFromCart, cartCount, isCartOpen, openCart, closeCart, handleCheckout
-    }), [cart, cartCount, isCartOpen]);
-
-
     return (
 
-        <CartContext.Provider value={contextValue}>
+        <CartContext.Provider value={{ cart, addToCart, updateQuantity, removeFromCart, cartCount, isCartOpen, openCart, closeCart, handleCheckout }}>
             {children}
         </CartContext.Provider>
 

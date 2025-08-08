@@ -3,8 +3,6 @@ import CartItemCard from './CartItemCard';
 import { CartContext } from '../../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const CartDrawer: React.FC = () => {
 
     const navigate = useNavigate();
@@ -31,7 +29,7 @@ const CartDrawer: React.FC = () => {
     const deliveryFee = 1000;
 
     const total = subtotal + deliveryFee;
-    
+
 
     return (
         <div className="fixed inset-0 z-50 flex justify-end bg-black bg-opacity-60">
@@ -87,7 +85,7 @@ const CartDrawer: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Foot */}
+                    {/* Footer */}
                     {cart.length > 0 && (
                         <div className=" sticky absolute p-4 space-y-3 bg-white border-t border-gray-200  
                         bottom-0 rounded-bl-[26px]">
@@ -97,7 +95,6 @@ const CartDrawer: React.FC = () => {
                                 <div className="pb-8 flex justify-between">
 
                                     <span className='text-[16px] '>Sub total</span>
-
                                     <span className='text-[14px]'>PKR. {subtotal}</span>
 
                                 </div>
