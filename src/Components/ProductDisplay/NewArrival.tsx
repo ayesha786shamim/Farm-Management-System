@@ -13,27 +13,10 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
 
     console.log('New arrival component renders')
 
-
-    // const [products, setProducts] = useState<Product[]>([]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await getProducts();
-    //             setProducts(data);
-    //         } catch {
-    //             console.error('Failed to fetch products');
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
-
-
     //Scroll Button Functionality
     const scroll = (direction: 'left' | 'right') => {
 
         const scrollContainer = document.getElementById('product-scroll');
-
 
         if (scrollContainer) {
 
@@ -69,6 +52,7 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                 <div
                     id="product-scroll"
                     className="flex overflow-x-scroll scroll-smooth scrollbar-hide "
+
                 >
 
                     {products.map((product) => (
@@ -87,6 +71,7 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                                 description={product.description}
                                 category={product.category}
                             />
+
                         </div>
                     ))}
                 </div>

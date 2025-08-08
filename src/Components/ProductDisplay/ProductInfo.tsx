@@ -19,7 +19,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
     }
 
-    const { addToCart, openCart } = cartContext;
+    const { addToCart} = cartContext;
 
 
 
@@ -42,7 +42,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
         addToCart(product, quantity);
 
-        // openCart();
     };
 
 

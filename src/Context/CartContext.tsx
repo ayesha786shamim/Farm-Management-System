@@ -17,6 +17,7 @@ interface CartContextProps {
     removeFromCart: (productId: number) => void;
     openCart: () => void;
     closeCart: () => void;
+    handleCheckout: () => void;
 
 }
 
@@ -96,29 +97,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     };
 
-
-
-
-
-
-    // const updateQuantity = (productId: number, quantity: number) => {
-
-    //     setCart((prevCart) =>
-
-    //         prevCart.map((item) => {
-
-    //             if (item.id === productId) {
-
-    //                 return { ...item, quantity };  //if matches update the quantity 
-
-    //             } else {
-    //                 return item;
-    //             }
-    //         })
-    //     );
-    // };
-
-
+    // Update Quantity
     const updateQuantity = (productId: number, quantity: number) => {
 
         setCart((prevCart) =>
@@ -139,6 +118,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     }
 
+    //Remove from cart
     const removeFromCart = (productId: number) => {
 
         setCart((prevCart) =>
@@ -157,17 +137,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     const closeCart = () => setIsCartOpen(false);
 
-    const contextValue = useMemo(() => ({
-        cart,
-        addToCart,
-        updateQuantity,
-        removeFromCart,
-        cartCount,
-        isCartOpen,
-        openCart,
-        closeCart
-    }), [cart, cartCount, isCartOpen]);
+    const handleCheckout = () => {
 
+        setCart([]);
+        localStorage.removeItem('cart');
+
+    }
+
+    const contextValue = useMemo(() => ({
+        cart, addToCart, updateQuantity, removeFromCart, cartCount, isCartOpen, openCart, closeCart, handleCheckout
+    }), [cart, cartCount, isCartOpen]);
 
 
     return (

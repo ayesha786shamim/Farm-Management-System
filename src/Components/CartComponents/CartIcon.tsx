@@ -11,7 +11,7 @@ const CartIcon: React.FC = () => {
 
     if (!cartContext) return null;
 
-    const { openCart, closeCart, isCartOpen, cart, cartCount } = cartContext;
+    const { openCart,isCartOpen, cart, cartCount } = cartContext;
 
     return (
 
@@ -45,6 +45,7 @@ const CartIcon: React.FC = () => {
             {isCartOpen &&
                 <CartDrawer />
             }
+            
         </div>
 
     );

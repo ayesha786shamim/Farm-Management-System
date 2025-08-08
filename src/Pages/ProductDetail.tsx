@@ -27,19 +27,9 @@ const ProductDetail: React.FC = () => {
 
     }
 
-
-    // const cartContext = useContext(CartContext);
-
-    // if (!cartContext)
-    //     return null;
-
-    // const { cart } = cartContext;
-
     return (
         <div className="flex flex-col w-full bg-transparent h-auto max-h-screen  scrollbar-hide">
 
-
-            {/* <TopPanel /> */}
 
             {!state ? (
                 <div className="font-Montserrat font-bold text-[20px] 
@@ -65,8 +55,6 @@ const ProductDetail: React.FC = () => {
 
                 </div>
             )}
-
-            {/* <CartDrawer/> */}
 
             {/* Cart Icon with Count */}
             <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import CartItemCard from './CartItemCard';
 import { CartContext } from '../../Context/CartContext';
-import { useNavigate, createSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,7 +13,7 @@ const CartDrawer: React.FC = () => {
 
     if (!cartContext) return null;
 
-    const { openCart, closeCart, isCartOpen, cart, cartCount } = cartContext;
+    const {closeCart, isCartOpen, cart, cartCount } = cartContext;
 
 
     if (!isCartOpen) {
@@ -28,11 +28,10 @@ const CartDrawer: React.FC = () => {
 
     }
 
-
-
     const deliveryFee = 1000;
 
     const total = subtotal + deliveryFee;
+    
 
     return (
         <div className="fixed inset-0 z-50 flex justify-end bg-black bg-opacity-60">

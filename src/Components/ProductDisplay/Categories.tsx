@@ -16,24 +16,9 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
     console.log('Category component renders')
 
-    // const [products, setProducts] = useState<Product[]>([]);
-
     const [visibleCount, setVisibleCount] = useState<number>(10);
 
     const [activeCategory, setActiveCategory] = useState<string>('All');
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const data = await getProducts();
-    //             setProducts(data);
-    //         } catch {
-    //             console.error('Failed to fetch products');
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
-
 
     const handleLoadMore = () => {
 
@@ -46,7 +31,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
         activeCategory === 'All'
 
             ? products
-            
+
             : products.filter((product) =>
                 product.category === activeCategory
             );
@@ -57,29 +42,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
     return (
 
         <div className="container pl-4 pr-4 pb-4">
-
-            {/* Title
-            <div className="text-center mb-4">
-                <h2 className="input-font input-fontBold text-[18px] text-Golden">
-                    Categories
-                </h2>
-            </div> */}
-
-            {/* <div className='justify centre mt-3 mb-7'>
-                <CategorySelector />
-            </div> */}
-
-
-            {/* <div className="pt-7 pb-10">
-
-                <CategorySelector
-                    activeCategory={activeCategory}
-                    onCategoryChange={setActiveCategory}
-                />
-
-            </div> */}
-
-
 
             {/* Category selection */}
             <div className="pt-7 pb-10">
@@ -126,18 +88,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                     />
                 ))}
             </div>
-
-
-            {/* Load More Button
-            <div className="flex justify-center mt-6 mb-5">
-                <button
-                    onClick={handleLoadMore}
-                    className="font-Poppins text-[16px] flex items-center gap-2 hover:opacity-80 transition"
-                >
-                        <span className="underline font-bold text-Forest_Green">VIEW ALL PRODUCTS</span>
-                        <span className="text-xl text-Forest_Green">→</span>
-                </button>
-            </div> */}
 
 
             {/*  Load More Button */}

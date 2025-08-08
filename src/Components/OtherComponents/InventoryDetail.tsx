@@ -1,5 +1,5 @@
-import { timeStamp } from 'console';
 import React from 'react';
+
 
 const InventoryDetail: React.FC = () => {
 
@@ -39,9 +39,7 @@ const InventoryDetail: React.FC = () => {
     };
 
     return (
-        <div className="mt-0 mb-0 h-screen">
-
-            {/* <h1 className="text-center text-[24px] text-Black font-Montserrat font-bold mb-8">Inventory</h1> */}
+        <div className="mt-0 mb-0 px-5 h-screen">
 
             {/* order details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6 mb-4 text-[14px] font-Montserrat">
@@ -136,7 +134,7 @@ const InventoryDetail: React.FC = () => {
                 {orderDetails.products.map((product) => (
 
                     <div
-                        className="flex items-start gap-8 px-2 pt-6 pb-7">
+                        className="flex items-start gap-8 pt-6 pb-7">
 
                         <div className='w-[206px] h-[180px] flex justify-center items-center bg-white rounded shadow-md'>
                             <img

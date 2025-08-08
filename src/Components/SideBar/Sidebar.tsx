@@ -17,14 +17,6 @@ const Sidebar: React.FC = () => {
         { name: 'Warehouse', icon: <Warehouse />, path: '/Warehouse' },
         { name: 'Lands', icon: <NotebookPen />, path: '/Lands' },
         { name: 'Marketplace', icon: <Store />, path: '/MarketPlace' },
-
-        // {
-        //     name: 'Marketplace',
-        //     icon: <Store />,
-        //     path: role === 'admin' 
-        //      ? '/MarketPlaceAdmin'
-        //      : '/MarketPlace'
-        // },
     ];
 
     const toggleMobileMenu = () => {

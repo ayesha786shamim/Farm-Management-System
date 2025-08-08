@@ -10,7 +10,7 @@ const RoleSelection: React.FC = () => {
         <div className="flex flex-col h-full w-full bg-transparent">
 
 
-            {/* Role Select */}
+            {/* Role Selection */}
             <RoleSelect />
 
 

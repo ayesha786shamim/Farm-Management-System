@@ -11,13 +11,13 @@ const CheckoutInformation: React.FC = () => {
 
     const [searchParams] = useSearchParams();
 
-    const total = searchParams.get('total') ;
+    const total = searchParams.get('total');
 
     const [formData, setFormData] = useState({
 
         name: '', email: '', phone: '', alternateNumber: '', country: 'Pakistan', state: '', district: '',
         city: '', address: '', postalCode: '', coupon: '', shippingPrice: '1000',
-        
+
     });
 
     const [dialogData, setDialogData] = useState({
@@ -27,40 +27,26 @@ const CheckoutInformation: React.FC = () => {
 
     });
 
-
     const cartContext = useContext(CartContext);
 
     if (!cartContext) return null;
 
-    const { cart, cartCount, closeCart } = cartContext;
-
-
+    const { cart, cartCount, handleCheckout } = cartContext;
 
 
     const handleCancel = () => {
+        navigate(-1);
+    }
 
+    const handleNavigate = () => {
+
+        handleCheckout();
         navigate(-1);
 
-    };
-
+    }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-
         e.preventDefault();
-
-        setDialogData({
-
-            isOpen: true,
-            type: 'success',
-
-        });
-
-
-        // if (dialogData.type === 'success') {
-        //     navigate(-2);
-        // }
-
-
 
         const { state, district, city, address, postalCode } = formData;
 
@@ -68,11 +54,26 @@ const CheckoutInformation: React.FC = () => {
 
             setDialogData({
                 isOpen: true,
-                type: 'error',
+                type: 'error'
             });
-            return;
+            return null;
         }
+
+        setDialogData({
+            isOpen: true,
+            type: 'success'
+        });
+        setTimeout(() => {
+            setDialogData((dialogData) => (
+
+                { ...dialogData, isOpen: false }
+
+            ))
+            handleNavigate();
+        }, 2000);
+
     };
+
 
     return (
         <div className=" ">
@@ -83,8 +84,7 @@ const CheckoutInformation: React.FC = () => {
                 <form onSubmit={handleSubmit} className="w-[1042px] bg-white rounded-2xl border border-gray shadow px-6">
 
                     {/* Information details */}
-
-                    <div className=''>
+                    <div>
 
                         <h2 className="text-[18px] font-Montserrat font-bold text-Golden pt-7 pb-4">
                             Contact Details
@@ -97,20 +97,20 @@ const CheckoutInformation: React.FC = () => {
                             <div className='flex flex-col space-y-2'>
                                 <label className="text-[12px] text-[#5C5C5C] font-Montserrat font-normal ">Name</label>
                                 <p className="text-[16px] font-semibold text-Black font-Montserrat text-Black ">Basit Ali</p>
-                                {/* 
-                                    <input
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        placeholder="Enter name"
-                                        className={`w-full rounded px-1 py-1 text-[12px] font-semibold text-Black font-Montserrat 
+
+                                {/* <input
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    placeholder="Enter name"
+                                    className={`w-full rounded px-1 py-1 text-[12px] font-semibold text-Black font-Montserrat 
 
                                         placeholder:text-[10px] placeholder:text-Input_Text placeholder:font-normal 
                                             ${formData.name
-                                                ? 'bg-white  border-transparent px-0'
-                                                : 'bg-Input_Bg border border-Input_Border'} 
+                                            ? 'bg-white  border-transparent px-0'
+                                            : 'bg-Input_Bg border border-Input_Border'} 
                                              focus:outline-none focus:ring-0`}
-                                    /> */}
+                                /> */}
 
                             </div>
 
@@ -118,7 +118,8 @@ const CheckoutInformation: React.FC = () => {
                             <div className='flex flex-col space-y-2'>
                                 <label className="text-[12px] text-Gray font-Montserrat font-normal">Email</label>
                                 <p className="text-[16px] font-semibold text-Black font-Montserrat text-Black ">basitali@gmail.com</p>
-                                {/* <input
+                                {/* 
+                                <input
                                         name="email"
                                         type="email"
                                         value={formData.email}
@@ -139,6 +140,7 @@ const CheckoutInformation: React.FC = () => {
                             <div className=' flex flex-col space-y-2'>
                                 <label className="text-[12px] text-Gray font-Montserrat font-normal">Phone Number</label>
                                 <p className="text-[16px] font-semibold text-Black font-Montserrat text-Black ">03045672973</p>
+
                                 {/* <input
                                         name="phone"
                                         type="tel"
@@ -529,19 +531,19 @@ const CheckoutInformation: React.FC = () => {
                     <StatusDialog
 
                         isOpen={dialogData.isOpen}
-
                         type={dialogData.type}
 
                         onClose={() => {
 
-                            setDialogData(
+                            setDialogData((dialogData) => (
 
                                 { ...dialogData, isOpen: false }
+                            ))
 
-                            );
+                            if (dialogData.type === "success") {
 
-                            if (dialogData.type === 'success') {
-                                navigate(-1);
+                                handleNavigate();
+
                             }
                         }}
 

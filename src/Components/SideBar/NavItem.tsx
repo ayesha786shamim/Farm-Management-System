@@ -11,7 +11,7 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ name, icon, path, onItemClick }) => {
 
-    const location = useLocation(); // get the current URL
+    const location = useLocation(); 
 
     const currentPath = location.pathname;
 

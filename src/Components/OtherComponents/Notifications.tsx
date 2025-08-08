@@ -154,9 +154,45 @@ const Notifications = () => {
             timestamp: getCurrentTimestamp(),
             image: '',
             isRead: false,
+        }, {
+            id: '13',
+            type: 'others',
+            title: 'You have a new Order.',
+            description: '100kg wheat order by Basit Ali',
+            timestamp: getCurrentTimestamp(),
+            image: '/images/image1.svg',
+            isRead: false,
         },
 
+        {
+            id: '14',
+            type: 'others',
+            title: 'You have received payment from Ali',
+            description: 'Amount: 35000 PKR',
+            timestamp: getCurrentTimestamp(),
+            image: '/images/image2.svg',
+            isRead: false,
+        },
 
+        {
+            id: '15',
+            type: 'approval',
+            title: 'Your request of wheat has been approved',
+            description: 'The request of wheat Product has been approved',
+            timestamp: getCurrentTimestamp(),
+            image: '',
+            isRead: false,
+        },
+
+        {
+            id: '16',
+            type: 'others',
+            title: 'Your Wheat stock has dropped below 25 kg kgkgkgkgkgkgkgkgkgkgkgkgkgkg',
+            description: 'Increase your most sold product',
+            timestamp: getCurrentTimestamp(),
+            image: '/images/image1.svg',
+            isRead: false,
+        },
 
     ]);
 
@@ -179,11 +215,6 @@ const Notifications = () => {
         setShowAll(true)
 
     };
-
-    // const notificationDisplayed = showAll === true
-    //     ? notifications
-    //     : notifications.slice(0, 4);
-
 
     const notificationDisplayed = showAll === true
         ? notifications
@@ -307,7 +338,7 @@ const Notifications = () => {
 
             {/* Show All Button */}
 
-            {!showAll  && (
+            {!showAll && (
 
                 <div className=" px-6 py-2 bg-[#F8F7EF] border-t shadow-xl flex items-center justify-center">
 

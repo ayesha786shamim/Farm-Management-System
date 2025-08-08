@@ -1,32 +1,3 @@
-// import React from "react";
-// import Sidebar from "../CommonComponents/Sidebar";
-// import TopPanel from "../CommonComponents/TopPanel";
-// import { Outlet } from "react-router-dom";
-
-// const SidebarLayout: React.FC = () => {
-//     return (
-
-//         <div className="flex h-screen w-screen overflow-hidden">
-
-//             <Sidebar />
-
-//             <div className="flex-1 flex flex-col overflow-hidden bg-Background_Color">
-
-//                 <TopPanel /> 
-
-//                 <div className="overflow-auto flex-1 px-4 py-4">
-
-//                     <Outlet />
-
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default SidebarLayout;
-
-
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../Components/SideBar/Sidebar";
