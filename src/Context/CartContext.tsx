@@ -31,7 +31,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>(() => {
 
         const storedCart = localStorage.getItem('cart');
-
         return storedCart ? JSON.parse(storedCart) : [];
 
     });
@@ -45,7 +44,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 
     const [isCartOpen, setIsCartOpen] = useState(false);
-
 
 
     // Add to cart function
@@ -65,8 +63,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 console.log("Product already exist in the cart");
 
                 return prevCart.map((item) => {
+
                     if (item.id === product.id) {
+
                         return { ...item, quantity: item.quantity + quantity };
+
                     } else {
                         return item
                     }
@@ -76,11 +77,22 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             } else {
 
                 console.log("Pr0duct added as new product");
+
                 // return [{ ...product, quantity }, ...prevCart];
+
                 console.log(prevCart);
-                return [...prevCart, { ...product, quantity }];
+
+                const updatedCart = [...prevCart, { ...product, quantity }];
+
+                console.log('Updated cart:', updatedCart);
+
+                return updatedCart;
+
+
             }
+
         });
+
         toast.success('Product added to cart!', {
             position: 'top-right',
             autoClose: 2000,
@@ -97,28 +109,24 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     };
 
-    // Update Quantity
+    // Update quantity function
     const updateQuantity = (productId: number, quantity: number) => {
 
         setCart((prevCart) =>
 
             prevCart.map((item) => {
-
                 if (item.id === productId) {
 
                     return { ...item, quantity }
-
                 }
                 else {
                     return item
                 }
             })
         )
-
-
     }
 
-    //Remove from cart
+    //Remove from cart function
     const removeFromCart = (productId: number) => {
 
         setCart((prevCart) =>
@@ -137,6 +145,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     const closeCart = () => setIsCartOpen(false);
 
+    //checkout function
     const handleCheckout = () => {
 
         setCart([]);

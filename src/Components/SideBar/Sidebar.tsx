@@ -8,8 +8,6 @@ const Sidebar: React.FC = () => {
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const role = localStorage.getItem("selectedRole");
-
     const sidebarItems = [
 
         { name: 'Dashboard', icon: <LayoutDashboard />, path: '/Dashboard' },
@@ -33,10 +31,8 @@ const Sidebar: React.FC = () => {
             {/* Mobile Hamburger Button */}
             <button
                 onClick={toggleMobileMenu}
-                
-                className="lg:hidden fixed pl-4 pt-6 z-50 bg-transparent text-Forest_Green hover:Gray transition-colors"
 
-                aria-label="Toggle menu"
+                className="lg:hidden fixed pl-4 pt-6 z-50 bg-transparent text-Forest_Green hover:Gray transition-colors"
             >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
 

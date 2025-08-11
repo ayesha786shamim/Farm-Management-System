@@ -22,7 +22,7 @@ const CartIcon: React.FC = () => {
                 <button
 
                     onClick={openCart}
-                    className="bg-Golden text-white p-4 rounded-full shadow shadow-2xl shadow-black-200 h-[64px] w-[64px] transform 
+                    className="bg-Golden text-white p-4 rounded-full shadow shadow-2xl/30 shadow-gray-300 h-[64px] w-[64px] transform 
                         hover:scale-95 active:scale-85 cursor-pointer transition-transform duration-200 ease-in-out"
 
                 >

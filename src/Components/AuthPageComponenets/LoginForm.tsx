@@ -58,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
-        
+
       </div>
 
       <button
@@ -67,7 +67,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
       >
         Login
       </button>
-
+      {/* 
       <p className="text-center text-[10px] text-Black font-Poppins font-bold mt-3">
         Don’t have an account?
 
@@ -79,7 +79,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           
           Sign Up
         </button>
-      </p>
+      </p> */}
+      
     </form>
   );
 };

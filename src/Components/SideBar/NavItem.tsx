@@ -6,10 +6,9 @@ interface NavItemProps {
     icon: React.ReactNode;
     path: string;
     
-    onItemClick?: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ name, icon, path, onItemClick }) => {
+const NavItem: React.FC<NavItemProps> = ({ name, icon, path }) => {
 
     const location = useLocation(); 
 

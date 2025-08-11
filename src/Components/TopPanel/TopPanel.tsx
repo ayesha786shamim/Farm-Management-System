@@ -1,6 +1,6 @@
 import React from 'react';
-import { Bell, Search, Settings, Package } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Bell, Search, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Notifications from '../OtherComponents/Notifications';
 import '../../Styles/Product-style.css';
 
@@ -28,8 +28,6 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
 
     const [showNotifications, setShowNotifications] = React.useState(false);
 
-    const role = localStorage.getItem("selectedRole");
-
     return (
         <div className="bg-transparent px-6 pt-6 pb-3">
 
@@ -48,8 +46,9 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
                                     onClick={() => setShowNotifications(!showNotifications)}
 
                                     className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
-                                hover:bg-Forest_Green text-Forest_Green hover:text-white 
-                                transition-colors relative"
+                                    text-Forest_Green hover:scale-105 active:scale-95 
+                                    transition-transform duration-200 ease-in-out
+                                    transition-colors relative"
                                 >
                                     <Bell className="w-[15px] h-[15px] text-current" />
                                     <div className="absolute top-0 right-0 translate-x-1/8 -translate-y-1/8 w-2 h-2 bg-Forest_Green rounded-full"></div>
@@ -118,9 +117,9 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
 
                             <button
                                 onClick={handleOrderHistoryClick}
-                                className=" w-[131px] bg-Forest_Green hover:bg-Dark_Green text-white text-[14px] 
-                                    font-Poppins font-semibold 
-                                    px-4 py-2 rounded-3xl flex "
+                                className=" w-[131px] bg-Forest_Green text-white text-[14px] font-Poppins 
+                                font-semibold hover:scale-105 active:scale-95 transition-transform 
+                                duration-200 ease-in-out px-4 py-2 rounded-3xl flex "
                             >
                                 <span>Order History</span>
                             </button>
@@ -131,8 +130,10 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
                     {/* Search + Settings */}
                     {showSearch && (
                         <button className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
-                            hover:bg-Forest_Green text-Forest_Green hover:text-white  
-                            transition-colors">
+                                text-Forest_Green hover:scale-105 active:scale-95 
+                                transition-transform duration-200 ease-in-out
+                                transition-colors relative"
+                        >
                             <Search className="w-[15px] h-[15px] text-current" />
                         </button>
                     )}
@@ -140,8 +141,10 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
 
                     {showSettings && (
                         <button className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
-                            hover:bg-Forest_Green text-Forest_Green hover:text-white 
-                            transition-colors">
+                                text-Forest_Green hover:scale-105 active:scale-95 
+                                transition-transform duration-200 ease-in-out
+                                transition-colors relative"
+                        >
                             <Settings className="w-[15px] h-[15px] text-current" />
                         </button>
                     )}

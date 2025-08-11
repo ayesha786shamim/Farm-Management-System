@@ -11,7 +11,7 @@ const CartDrawer: React.FC = () => {
 
     if (!cartContext) return null;
 
-    const {closeCart, isCartOpen, cart, cartCount } = cartContext;
+    const { closeCart, isCartOpen, cart, cartCount } = cartContext;
 
 
     if (!isCartOpen) {
@@ -107,29 +107,32 @@ const CartDrawer: React.FC = () => {
                                 </div>
 
                             </div>
+                            <div className="flex flex-col items-center gap-3">
+                                <button
+                                    onClick={() => {
+                                        navigate({
+                                            pathname: '/MarketPlace/ProductDetail/Checkout',
+                                            search: `?total=${total}&total-Products=${cartCount}`,
+                                        });
+                                    }}
+                                    className="w-[333px] bg-Forest_Green text-white py-2 rounded-full font-semibold 
+                                    font-Montserrat text-[16px] hover:scale-85 active:scale-95 transition-transform 
+                                    duration-100 ease-in-out"
+                                >
+                                    Check Out
+                                </button>
 
-                            <button
-                                onClick={() => {
-
-                                    navigate({
-                                        pathname: '/MarketPlace/ProductDetail/Checkout',
-                                        search: `?total=${total}&total-Products=${cartCount}`,
-                                    },)
-                                }}
-                                className="w-[333px] bg-Forest_Green text-white py-3 rounded-full font-semibold 
-                                font-Montserrat hover:bg-green-700 transition-colors text-[16px]"
-                            >
-                                Check Out
-                            </button>
+                                <button
+                                    onClick={closeCart}
+                                    className="w-[333px] text-Golden py-2 rounded-full font-semibold font-Montserrat text-[16px] 
+                                    hover:bg-Forest_Green hover:text-white transition-colors border border-Forest_Green hover:scale-85 
+                                    active:scale-95 transition-transform duration-100 ease-in-out"
+                                >
+                                    View Cart
+                                </button>
+                            </div>
 
 
-                            <button
-                                onClick={closeCart}
-                                className="w-[333px] text-Golden py-2 rounded-full font-semibold font-Montserrat text-[16px] 
-                                hover:bg-Forest_Green hover:text-white transition-colors border border-Forest_Green"
-                            >
-                                View Cart
-                            </button>
                         </div>
                     )}
                 </div>

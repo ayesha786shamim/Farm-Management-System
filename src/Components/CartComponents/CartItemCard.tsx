@@ -47,7 +47,6 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, isSingleItem }) => {
                     }`}
             >
 
-
                 {isSingleItem && (
                     <div className=' justify-between item-center mx-10'>
                         <img
@@ -116,7 +115,8 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, isSingleItem }) => {
                         </div>
 
                         <button
-                            className="text-Forest_Green text-[14px] font-semibold underline "
+                            className="text-Forest_Green text-[14px] font-semibold underline
+                            hover:scale-105 active:scale-95 transition-transform duration-100 ease-in-out "
                             onClick={handleRemove}
                         >
                             REMOVE
