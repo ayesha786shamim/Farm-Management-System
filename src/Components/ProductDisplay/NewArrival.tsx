@@ -7,6 +7,7 @@ import '../../Styles/Product-style.css';
 
 interface NewArrivalProps {
     products: Product[];
+
 }
 
 const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
@@ -52,16 +53,12 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                 <div
                     id="product-scroll"
                     className="flex overflow-x-scroll scroll-smooth scrollbar-hide "
-
                 >
-
                     {products.map((product) => (
-
                         <div
                             key={product.id}
                             className="flex-shrink-0 px-1"
                             style={{ width: '20%' }}
-
                         >
                             <ProductCard
                                 id={product.id}
@@ -71,36 +68,38 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                                 description={product.description}
                                 category={product.category}
                             />
-
                         </div>
                     ))}
                 </div>
 
                 {/* Arrow Buttons */}
-                <div className="flex justify-center gap-4 mt-3">
+                {products.length > 5 &&
 
-                    <button
-                        onClick={() => scroll('left')}
-                        className="w-[30px] h-[30px] bg-white border border-Forest_Green rounded-full 
-                        flex items-center justify-center hover:bg-Forest_Green group transition"
-                    >
+                    <div className="flex justify-center gap-4 mt-3">
 
-                        <ChevronLeft className="w-[15px] h-[20px] text-Forest_Green group-hover:text-white transition-colors" />
+                        <button
+                            onClick={() => scroll('left')}
+                            className="w-[30px] h-[30px] bg-white border border-Forest_Green rounded-full 
+                            flex items-center justify-center hover:bg-Forest_Green group transition"
+                        >
 
-                    </button>
+                            <ChevronLeft className="w-[15px] h-[20px] text-Forest_Green group-hover:text-white transition-colors" />
 
-                    <button
-                        onClick={() => scroll('right')}
-                        className="w-[30px] h-[30px] bg-white border border-Forest_Green rounded-full 
-                        flex items-center justify-center hover:bg-Forest_Green group transition"
-                    >
+                        </button>
 
-                        <ChevronRight className="w-[15px] h-[20px] text-Forest_Green group-hover:text-white transition-colors" />
+                        <button
+                            onClick={() => scroll('right')}
+                            className="w-[30px] h-[30px] bg-white border border-Forest_Green rounded-full 
+                            flex items-center justify-center hover:bg-Forest_Green group transition"
+                        >
 
-                    </button>
+                            <ChevronRight className="w-[15px] h-[20px] text-Forest_Green group-hover:text-white transition-colors" />
+
+                        </button>
 
 
-                </div>
+                    </div>
+                }
             </div>
         </div>
     );

@@ -61,7 +61,7 @@ const mockFarmProducts: Product[] = [
     image: "/images/Urea2.svg",
     description: "Dual nutrient formula for stronger cell walls and prevention of blossom end rot in tomatoes, peppers, and fruits. Improves overall fruit firmness and shelf life.",
     category: "Fertilizer",
-    newArrival: false
+    newArrival: true
   },
   {
     id: 7,
