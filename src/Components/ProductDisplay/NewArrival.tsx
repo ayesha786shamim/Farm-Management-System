@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 // import { getProducts, Product } from '../api/ProductApi';
-import { getProducts, Product } from '../../api/MockProduct';
+// import { getProducts, Product } from '../../api/MockProduct';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import '../../Styles/Product-style.css';
+import { Product } from '../../services/productsService';
 
 interface NewArrivalProps {
     products: Product[];
@@ -63,10 +64,11 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                                 id={product.id}
                                 title={product.title}
                                 price={product.price}
-                                imageUrl={product.image}
+                                // image={product.image}
+                                images={product.images}
                                 description={product.description}
                                 category={product.category}
-                                features={product.features || []}
+                                features={product.features}
                             />
                         </div>
                     ))}

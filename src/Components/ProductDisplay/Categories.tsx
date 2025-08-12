@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 // import { getProducts, Product } from '../api/ProductApi';
-import { getProducts, Product } from '../../api/MockProduct';
+// import { getProducts, Product } from '../../api/MockProduct';
 import '../../Styles/Product-style.css';
-import CategorySelector from './CategorySelector';
 import { ArrowRight } from 'lucide-react';
+import { Product } from '../../services/productsService';
 
 interface CategoriesProps {
     products: Product[];
@@ -54,7 +54,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
                             <button
                                 onClick={() => { setActiveCategory(category); }}
-                                
+
                                 className={`input-font font-semibold text-[12px] 
                                  w-[135px] py-2 rounded-full transition-all duration-300
                                  
@@ -81,10 +81,11 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                         id={product.id}
                         title={product.title}
                         price={product.price}
-                        imageUrl={product.image}
+                        // image={product.image}
+                        images={product.images}
                         description={product.description}
                         category={product.category}
-                        features={product.features || []}
+                        features={product.features}
 
                         fromCategoryComponent={true}
                     />

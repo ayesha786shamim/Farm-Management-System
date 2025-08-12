@@ -9,12 +9,12 @@ export interface Product {
 
 export const getProducts = async (): Promise<Product[]> => 
   {
-  const res = await fetch('https://fakestoreapi.com/products');
+  const responce = await fetch('https://fakestoreapi.com/products');
 
-  if (!res.ok) {
+  if (!responce.ok) {
     throw new Error('Failed to fetch products from FakeStore API');
   }
 
-  const data: Product[] = await res.json();
+  const data: Product[] = await responce.json();
   return data;
 };

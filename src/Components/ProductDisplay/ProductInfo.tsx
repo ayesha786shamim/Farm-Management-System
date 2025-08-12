@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../../Context/CartContext';
-import { Product } from '../../api/MockProduct';
-import { toast } from 'react-toastify';
+// import { Product } from '../../api/MockProduct';
+import { Product } from '../../services/productsService';
 
 interface ProductInfoProps extends Product { }
 
 
-const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, description, category, features }) => {
+const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, images, description, category, features }) => {
 
 
     const [quantity, setQuantity] = useState<number>(1);
@@ -36,11 +36,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
     const handleAddToCart = () => {
 
-        console.log("Adding this product:", { id, title, price, image, description, category, features ,quantity });
+        console.log("Adding this product:", { id, title, price, images, description, category, features, quantity });
 
-        const product = { id, title, price, image, description, category , features};
+        const cartProduct: Product = { id, title, price, images, description, category, features };
 
-        addToCart(product, quantity);
+        addToCart(cartProduct, quantity);
 
     };
 
@@ -109,16 +109,36 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
                 <div>
                     <h4 className="text-Black font-semibold text-[14px]">Features:</h4>
-                    <p className="text-Gray text-[14px]">{features}</p>
+                    <ul className="list-disc list-inside text-Gray text-[14px] space-y-1">
+
+                        {features?.length > 0 ? (
+
+                            features.map((feature) => (
+                                <li>
+                                    {feature}
+                                </li>
+                            ))
+                        ) : (
+
+                            <li>No features available</li>
+                        )}
+                    </ul>
                 </div>
+
             </div>
 
             <div className="w-[522px] h-[390px] bg-white mx-auto rounded-2xl shadow-md relative flex items-center justify-center p-4">
-                <img
+                {/* <img
                     src={image}
                     alt={title}
                     className="w-[366px] h-[366px] object-contain"
-                />
+                /> */}
+                {images && images.length > 0 && (
+                    <img
+                        src={images[0]}
+                        alt={title}
+                    />
+                )}
             </div>
         </div>
     );

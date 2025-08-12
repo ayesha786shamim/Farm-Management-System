@@ -1,6 +1,7 @@
 import React, { createContext, useState, ReactNode, useEffect, useMemo } from 'react';
-import { Product } from '../api/MockProduct';
+// import { Product } from '../api/MockProduct';
 import { toast } from 'react-toastify';
+import { Product } from '../services/productsService';
 
 export interface CartItem extends Product {
     quantity: number;

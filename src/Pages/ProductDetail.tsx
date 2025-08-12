@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import TopPanel from '../Components/TopPanel/TopPanel';
+import { useLocation } from 'react-router-dom';
 import ProductInfo from '../Components/ProductDisplay/ProductInfo';
-import CartDrawer from '../Components/CartComponents/CartDrawer';
 import { CartContext } from '../Context/CartContext';
 import CartIcon from '../Components/CartComponents/CartIcon';
 
@@ -47,7 +45,8 @@ const ProductDetail: React.FC = () => {
                         id={state.id}
                         title={state.title}
                         price={state.price}
-                        image={state.imageUrl}
+                        // image={state.image}
+                        images={state.images}
                         description={state.description}
                         category={state.category}
                         features={state.features}

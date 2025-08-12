@@ -50,7 +50,8 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, isSingleItem }) => {
                 {isSingleItem && (
                     <div className=' justify-between item-center mx-10'>
                         <img
-                            src={item.image}
+                            // src={item.image}
+                            src={item.images?.[0]}
                             alt={item.title}
                             className=" object-contain w-[240px] h-[240px]"
                         />
@@ -126,7 +127,8 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, isSingleItem }) => {
 
                 {!isSingleItem && (
                     <img
-                        src={item.image}
+                        // src={item.image}
+                        src={item.images?.[0]}
                         alt={item.title}
                         className="object-contain w-[78px] h-[111px] ml-4 pb-4"
                     />

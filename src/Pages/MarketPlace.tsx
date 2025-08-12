@@ -3,7 +3,8 @@ import NewArrival from '../Components/ProductDisplay/NewArrival';
 import Categories from '../Components/ProductDisplay/Categories';
 import { CartContext } from '../Context/CartContext';
 import LoadingSpinner from '../Components/LoadingSpinner.tsx/LoadingSpinner';
-import { getProducts, Product } from '../api/MockProduct';
+// import { getProducts, Product } from '../api/MockProduct';
+import { getProducts, Product } from '../services/productsService';
 import CartIcon from '../Components/CartComponents/CartIcon';
 
 
@@ -57,10 +58,13 @@ const MarketPlace: React.FC = () => {
     <div className="flex flex-col h-full w-full bg-transparent">
 
 
-      {/*newArrival*/}
+      {/* newArrival
       <NewArrival products={products.filter((product) =>
         product.newArrival
-      )} />
+      )} /> */}
+
+      {/* newArrival */}
+      <NewArrival products={products} />
 
 
       {/*Categories*/}

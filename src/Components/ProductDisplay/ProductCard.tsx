@@ -3,23 +3,16 @@ import { Eye, Plus } from "lucide-react";
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import '../../Styles/Product-style.css';
 import { CartContext } from '../../Context/CartContext';
+import { Product } from '../../services/productsService';
 
 
-interface ProductCardProps {
-
-    id: number
-    title: string;
-    price: number;
-    imageUrl: string;
-    description: string;
-    category: string;
-    features: string[];
+interface ProductCardProps extends Product {
 
     fromCategoryComponent?: boolean;
 
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, description, category,features, fromCategoryComponent, }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, description, category, features, fromCategoryComponent, }) => {
 
     const navigate = useNavigate();
 
@@ -36,16 +29,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
 
     const handlePlusClick = () => {
 
-        const product = { id, title, price, image: imageUrl, description, category ,features };
+        const cartProduct : Product = { id, title, price, images, description, category, features };
 
-        addToCart(product, 1);
+        addToCart( cartProduct , 1);
 
     };
 
 
     const handleAddToCartClick = () => {
 
-        const product = { id, title, price, imageUrl, description, category };
+        const productForDetail : Product = { id, title, price, images, description, category, features };
 
         navigate(
             {
@@ -54,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
                 search: createSearchParams({ id: id.toString() }).toString(),
             },
 
-            { state: product }
+            { state: productForDetail }
         );
     };
 
@@ -114,7 +107,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
                 }`}
             >
                 <img
-                    src={imageUrl}
+                    // src={image}
+                    src={images?.[0]}
                     alt={title}
                     className={`rounded-md object-contain max-w-full max-h-full
                     ${fromCategoryComponent
