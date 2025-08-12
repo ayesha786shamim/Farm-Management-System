@@ -54,6 +54,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
                             <button
                                 onClick={() => { setActiveCategory(category); }}
+                                
                                 className={`input-font font-semibold text-[12px] 
                                  w-[135px] py-2 rounded-full transition-all duration-300
                                  
@@ -83,6 +84,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                         imageUrl={product.image}
                         description={product.description}
                         category={product.category}
+                        features={product.features || []}
 
                         fromCategoryComponent={true}
                     />

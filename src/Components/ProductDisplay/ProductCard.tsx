@@ -13,12 +13,13 @@ interface ProductCardProps {
     imageUrl: string;
     description: string;
     category: string;
+    features: string[];
 
     fromCategoryComponent?: boolean;
 
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, description, category, fromCategoryComponent, }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, description, category,features, fromCategoryComponent, }) => {
 
     const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
 
     const handlePlusClick = () => {
 
-        const product = { id, title, price, image: imageUrl, description, category };
+        const product = { id, title, price, image: imageUrl, description, category ,features };
 
         addToCart(product, 1);
 
@@ -166,9 +167,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, imageUrl, d
                     bg-gradient-custom flex items-center justify-center cursor-pointer 
                     hover:bg-gradient-custom-diagonal hover:scale-105 active:scale-95 transition-transform duration-200 ease-in-out"
 
-                    onClick={(e) => {
+                    onClick={(event) => {
 
-                        e.stopPropagation(); //prevent the click event of the outer div
+                        event.stopPropagation(); //prevent the click event of the outer div
 
                         handlePlusClick();
                     }}

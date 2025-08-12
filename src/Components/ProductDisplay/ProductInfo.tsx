@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 interface ProductInfoProps extends Product { }
 
 
-const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, description, category, }) => {
+const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, description, category, features }) => {
 
 
     const [quantity, setQuantity] = useState<number>(1);
@@ -19,7 +19,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
     }
 
-    const { addToCart} = cartContext;
+    const { addToCart } = cartContext;
 
 
 
@@ -36,9 +36,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
     const handleAddToCart = () => {
 
-        console.log("Adding this product:", { id, title, price, image, description, category, quantity });
+        console.log("Adding this product:", { id, title, price, image, description, category, features ,quantity });
 
-        const product = { id, title, price, image, description, category };
+        const product = { id, title, price, image, description, category , features};
 
         addToCart(product, quantity);
 
@@ -109,7 +109,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, image, desc
 
                 <div>
                     <h4 className="text-Black font-semibold text-[14px]">Features:</h4>
-                    <p className="text-Gray text-[14px]">*Feature details go here........</p>
+                    <p className="text-Gray text-[14px]">{features}</p>
                 </div>
             </div>
 

@@ -50,6 +50,7 @@ const ProductDetail: React.FC = () => {
                         image={state.imageUrl}
                         description={state.description}
                         category={state.category}
+                        features={state.features}
 
                     />
 

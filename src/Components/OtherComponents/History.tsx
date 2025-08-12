@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, Search, RotateCcw, FileSearch } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Pagination } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 const History: React.FC = () => {
 
@@ -66,19 +68,52 @@ const History: React.FC = () => {
             status: 'Pending',
             statusColor: 'bg-[#D635351A] text-Red',
             productCategory: 'Weed'
+        },
+        {
+            id: '77777FMS',
+            date: '01/08/2025',
+            products: 3,
+            price: 'PKR 20,000',
+            status: 'Shipped',
+            statusColor: 'bg-[#BD8E4330] text-Golden',
+            productCategory: 'Pesticide'
+        },
+        {
+            id: '88888FMS',
+            date: '01/08/2025',
+            products: 2,
+            price: 'PKR 3,000',
+            status: 'Pending',
+            statusColor: 'bg-[#D635351A] text-Red',
+            productCategory: 'Weed'
+        },
+        {
+            id: '99999FMS',
+            date: '01/08/2025',
+            products: 1,
+            price: 'PKR 5,000',
+            status: 'Pending',
+            statusColor: 'bg-[#D635351A] text-Red',
+            productCategory: 'Weed'
         }
+
 
     ];
 
 
     const [filteredProducts, setFilteredProducts] = useState(orders);
 
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const itemsPerPage = 3
+
 
     const handleReset = () => {
         setSearchProductCategory('');
         setSearchStatus('');
         setSearchId('');
-        setFilteredProducts(orders)
+        setFilteredProducts(orders);
+        setCurrentPage(1);
     };
 
 
@@ -105,9 +140,18 @@ const History: React.FC = () => {
         });
 
         setFilteredProducts(filteredList);
+        setCurrentPage(1);
 
     };
 
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+    //define the starting index of the page
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    //define the ending index of the page
+    const endIndex = startIndex + itemsPerPage;
+
+    const currentOrders = filteredProducts.slice(startIndex, endIndex);
 
 
     return (
@@ -116,7 +160,7 @@ const History: React.FC = () => {
             <div className="px-2">
 
                 <div className="w-[full] bg-white rounded-2xl border border-gray shadow-sm">
-                    <div className="px-2 pt-5 pb-2 ">
+                    <div className="px-3 pt-5 pb-2 ">
 
                         <h2 className="text-[18px] font-Montserrat font-bold text-Golden">
                             Order History
@@ -233,15 +277,12 @@ const History: React.FC = () => {
                     <div className="pt-5 pb-4 px-3">
 
                         <div className="flex justify-center">
-
                             <div className="rounded-2xl overflow-x-auto border border-gray shadow-sm w-[1003px] h-auto">
-
                                 <table className="w-full">
 
                                     <thead className="bg-Forest_Green text-white text-left">
 
                                         {/* //table header */}
-
                                         <tr>
                                             <th className="px-6 py-4 text-[12px] font-Montserrat font-semibold">Order ID</th>
                                             <th className="px-6 py-4 text-[10px] font-Montserrat font-semibold">Order Date</th>
@@ -255,7 +296,7 @@ const History: React.FC = () => {
 
                                     <tbody className="bg-Light_Blue divide-y divide-gray text-left">
 
-                                        {filteredProducts.map((order) => (
+                                        {currentOrders.map((order) => (
 
                                             // order history display
                                             <tr>
@@ -287,7 +328,7 @@ const History: React.FC = () => {
                                         ))}
 
 
-                                        {filteredProducts.length === 0 && (
+                                        {currentOrders.length === 0 && (
 
                                             < tr >
                                                 <td colSpan={6} className="text-center py-5 text-[16px] text-Forest_Green font-Montserrat font-bold">
@@ -296,13 +337,32 @@ const History: React.FC = () => {
                                             </tr>
                                         )}
 
-
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
-                    </div>
 
+                        {/* //pagination */}
+                        {totalPages > 1 && (
+                            <div className="mt-4 flex justify-center">
+                                <Pagination
+                                    total={totalPages}
+                                    value={currentPage}
+                                    onChange={setCurrentPage}
+                                    color='#0F783B'
+                                    classNames={{
+                                        control:
+                                            'border-2 border-Forest_Green text-Forest_Green text-[12px] font-medium ' +
+                                            'hover:bg-Forest_Green hover:text-Forest_Green hover:border-Forest_Green ' +
+                                            'data-[active]:bg-Forest_Green data-[active]:text-white data-[active]:border-Forest_Green ' +
+                                            'data-[active]:hover:bg-Forest_Green data-[active]:hover:text-white'
+                                    }}
+                                />
+                            </div>
+                        )}
+
+                    </div>
                 </div>
             </div>
         </div >

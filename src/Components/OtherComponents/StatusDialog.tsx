@@ -3,8 +3,9 @@ import { Check, X, AlertTriangle } from 'lucide-react';
 
 interface StatusDialogProps {
     isOpen: boolean;
-    onClose: () => void;
     type: 'success' | 'error';
+
+    onClose: () => void;
 }
 
 const StatusDialog: React.FC<StatusDialogProps> = ({ isOpen = true, onClose, type = 'success' }) => {
@@ -34,7 +35,7 @@ const StatusDialog: React.FC<StatusDialogProps> = ({ isOpen = true, onClose, typ
 
                 {/* Close button */}
 
-                {onClose && (
+                {onClose &&  !isSuccess  &&(
 
                     <button
                         onClick={onClose}

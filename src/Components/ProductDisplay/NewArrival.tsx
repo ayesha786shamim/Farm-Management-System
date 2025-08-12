@@ -7,7 +7,6 @@ import '../../Styles/Product-style.css';
 
 interface NewArrivalProps {
     products: Product[];
-
 }
 
 const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
@@ -67,6 +66,7 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                                 imageUrl={product.image}
                                 description={product.description}
                                 category={product.category}
+                                features={product.features || []}
                             />
                         </div>
                     ))}

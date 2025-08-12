@@ -541,9 +541,7 @@ const CheckoutInformation: React.FC = () => {
                             ))
 
                             if (dialogData.type === "success") {
-
                                 handleNavigate();
-
                             }
                         }}
 
