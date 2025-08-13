@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useEffect, useMemo } from 'react';
+import React, { createContext, useState, ReactNode, useEffect, useContext } from 'react';
 // import { Product } from '../api/MockProduct';
 import { toast } from 'react-toastify';
 import { Product } from '../services/productsService';
@@ -151,7 +151,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
         setCart([]);
         localStorage.removeItem('cart');
-
     }
 
     return (
@@ -161,4 +160,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         </CartContext.Provider>
 
     );
+};
+
+export const useCart = () => {
+
+    const context = useContext(CartContext);
+
+    if (!context) {
+        throw new Error("useCart must be used within CartProvider");
+
+    }
+
+    return context;
 };

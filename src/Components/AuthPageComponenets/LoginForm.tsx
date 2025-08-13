@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
 
-interface LoginFormProps {
-  onSwitchToSignup: () => void;
-}
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
+const LoginForm: React.FC = () => {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const role = localStorage.getItem('selectedRole');
 
-    if (role === 'admin') {
-
-      if (email === 'admin@gmail.com' && password === 'admin') {
-
-        navigate('/MarketPlaceAdmin');
-
-      } else {
-
-        alert('Invalid admin credentials');
-
-      }
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      login();
+      navigate('/MarketPlaceAdmin');
+    }
+    else if (email === 'user@gmail.com' && password === 'user') {
+      login();
+      navigate('/MarketPlace');
+    }
+    else {
+      alert('Invalid credentials');
     }
   };
 
@@ -37,7 +35,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
 
       <div>
         <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Email</label>
-
         <input
           type="email"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -45,12 +42,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           onChange={(event) => setEmail(event.target.value)}
           required
         />
-
       </div>
 
       <div>
         <label className="text-[10px] text-Black font-Poppins font-bold mb-2">Password</label>
-
         <input
           type="password"
           className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -58,29 +53,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToSignup }) => {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
-
       </div>
 
-      <button
-        type="submit"
-        className="w-full bg-Forest_Green text-white py-2 rounded-md hover:bg-opacity-90"
-      >
+      <button type="submit" className="w-full bg-Forest_Green text-white py-2 rounded-md hover:bg-opacity-90">
         Login
       </button>
-      {/* 
-      <p className="text-center text-[10px] text-Black font-Poppins font-bold mt-3">
-        Don’t have an account?
-
-        <button
-          type="button"
-          className="text-primary underline text-Forest_Green"
-          onClick={onSwitchToSignup}
-        >
-          
-          Sign Up
-        </button>
-      </p> */}
-      
     </form>
   );
 };

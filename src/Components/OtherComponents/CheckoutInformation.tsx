@@ -5,6 +5,7 @@ import { Info, ChevronDown } from 'lucide-react';
 import { CartContext } from '../../Context/CartContext';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useCart } from '../../Context/CartContext';
 
 const CheckoutInformation: React.FC = () => {
 
@@ -20,11 +21,7 @@ const CheckoutInformation: React.FC = () => {
 
     });
 
-    const cartContext = useContext(CartContext);
-
-    if (!cartContext) return null;
-
-    const { cart, cartCount, handleCheckout } = cartContext;
+    const { cart, cartCount, handleCheckout } = useCart();
 
 
     const handleCancel = () => {

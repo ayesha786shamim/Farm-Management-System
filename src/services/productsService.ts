@@ -11,14 +11,14 @@ export interface Product {
     newArrival?: boolean;
     features: string[];
 }
-const API_URL = "https://dummyjson.com/products";
+const productAPI = "https://dummyjson.com/products";
 
 export const getProducts = async (): Promise<Product[]> => {
     try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(productAPI);
         return response.data.products;
     } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching products");
         return [];
     }
 };

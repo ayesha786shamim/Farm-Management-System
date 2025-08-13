@@ -3,6 +3,7 @@ import { Bell, Search, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Notifications from '../OtherComponents/Notifications';
 import '../../Styles/Product-style.css';
+import { useAuth } from '../../Context/AuthContext';
 
 interface TopPanelProps {
     title: string;
@@ -27,6 +28,13 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
     };
 
     const [showNotifications, setShowNotifications] = React.useState(false);
+
+    const { logout } = useAuth();
+
+    const handleLogout = () => {
+        logout();
+
+    }
 
     return (
         <div className="bg-transparent px-6 pt-6 pb-3">
@@ -140,7 +148,9 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
 
 
                     {showSettings && (
-                        <button className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
+                        <button
+                            onClick={handleLogout}
+                            className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
                                 text-Forest_Green hover:scale-105 active:scale-95 
                                 transition-transform duration-200 ease-in-out
                                 transition-colors relative"

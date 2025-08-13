@@ -137,6 +137,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, images, des
                     <img
                         src={images[0]}
                         alt={title}
+                        className="w-[366px] h-[366px] object-contain"
                     />
                 )}
             </div>

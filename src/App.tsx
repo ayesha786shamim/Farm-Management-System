@@ -8,43 +8,51 @@ import Lands from './Pages/Lands';
 import ProductDetail from './Pages/ProductDetail';
 import Checkout from './Components/OtherComponents/CheckoutInformation';
 import OrderHistory from './Pages/OrderHistory';
-// import RoleSelection from './Pages/RoleSelection';
-// import AuthPage from './Pages/AuthPage';
+import RoleSelection from './Pages/RoleSelection';
+import AuthPage from './Pages/AuthPage';
 import Inventory from './Pages/Inventory';
 import Layout from './Layout/Layout';
 import { CartProvider } from './Context/CartContext';
+import { AuthProvider } from './Context/AuthContext';
+import ProtectedRoute from './Components/ProtectedRoute';
 
 
 const App: React.FC = () => {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
+    <AuthProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
 
-          {/* routes without sidebar or top panel */}
-          {/* <Route path="/" element={<RoleSelection />} />
-          <Route path="/AuthPage" element={<AuthPage />} /> */}
+            {/* routes without sidebar or top panel */}
+            <Route path="/AuthPage" element={<AuthPage />} />
 
-          <Route path="/" element={<Navigate to="/MarketPlace" />} />
-
-          {/* Layout with sidebar and the top panel */}
-          <Route element={<Layout />} >
-
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/ManageFarm" element={<ManageFarm />} />
-            <Route path="/Warehouse" element={<Warehouse />} />
-            <Route path="/Lands" element={<Lands />} />
-            <Route path="/MarketPlace" element={<MarketPlace />} />
-            <Route path="/Marketplace/ProductDetail" element={<ProductDetail />} />
-            <Route path="/Marketplace/ProductDetail/Checkout" element={<Checkout />} />
-            <Route path="/MarketPlace/OrderHistory" element={<OrderHistory />} />
-            <Route path="/MarketPlace/OrderHistory/Inventory" element={<Inventory />} />
+            {/* <Route path="/" element={<Navigate to="/MarketPlace" />} /> */}
 
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+            <Route element={<ProtectedRoute />}>
+
+              {/* routes with sidebar and the top panel */}
+              <Route element={<Layout />} >
+
+                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="/ManageFarm" element={<ManageFarm />} />
+                <Route path="/Warehouse" element={<Warehouse />} />
+                <Route path="/Lands" element={<Lands />} />
+                <Route path="/MarketPlace" element={<MarketPlace />} />
+                <Route path="/Marketplace/ProductDetail" element={<ProductDetail />} />
+                <Route path="/Marketplace/ProductDetail/Checkout" element={<Checkout />} />
+                <Route path="/MarketPlace/OrderHistory" element={<OrderHistory />} />
+                <Route path="/MarketPlace/OrderHistory/Inventory" element={<Inventory />} />
+
+              </Route>
+
+            </Route>
+
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 

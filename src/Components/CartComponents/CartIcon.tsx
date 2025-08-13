@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import { ShoppingCart } from "lucide-react";
-import { CartContext } from "../../Context/CartContext";
 import CartDrawer from "./CartDrawer";
+import { useCart } from '../../Context/CartContext';
 
 const CartIcon: React.FC = () => {
 
     console.log("Cart Icon click")
 
-    const cartContext = useContext(CartContext);
-
-    if (!cartContext) return null;
-
-    const { openCart,isCartOpen, cart, cartCount } = cartContext;
+    const { openCart, isCartOpen, cart, cartCount } = useCart();
 
     return (
 

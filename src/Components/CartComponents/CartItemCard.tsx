@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext, CartItem } from '../../Context/CartContext';
+import { useCart, CartItem } from '../../Context/CartContext';
 
 interface CartItemCardProps {
 
@@ -10,7 +10,7 @@ interface CartItemCardProps {
 
 const CartItemCard: React.FC<CartItemCardProps> = ({ item, isSingleItem }) => {
 
-    const { removeFromCart, updateQuantity } = useContext(CartContext) || {};
+    const { removeFromCart, updateQuantity } = useCart();
 
     const handleIncrement = () => {
 

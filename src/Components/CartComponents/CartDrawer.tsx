@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
 import CartItemCard from './CartItemCard';
-import { CartContext } from '../../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../Context/CartContext';
 
 const CartDrawer: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const cartContext = useContext(CartContext);
 
-    if (!cartContext) return null;
-
-    const { closeCart, isCartOpen, cart, cartCount } = cartContext;
-
+    const { closeCart, isCartOpen, cart, cartCount } = useCart();
 
     if (!isCartOpen) {
         return null;
