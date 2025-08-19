@@ -232,7 +232,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, des
             )
             }
 
-            {/* stars and raating */}
+            {/* stars and rating */}
             {fromCategoryComponent && (
 
                 <div className="flex items-center gap-[4px]  pt-1 pl-[2px]">

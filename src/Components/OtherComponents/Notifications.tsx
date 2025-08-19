@@ -41,7 +41,7 @@ const Notifications = () => {
             id: '1',
             type: 'others',
             title: 'You have a new Order.',
-            description: '100kg wheat order by Basit Ali',
+            description: '100kg wheat order by  Ali',
             timestamp: getCurrentTimestamp(),
             image: '/images/image1.svg',
             isRead: false,
@@ -70,7 +70,7 @@ const Notifications = () => {
         {
             id: '4',
             type: 'others',
-            title: 'Your Wheat stock has dropped below 25 kg kgkgkgkgkgkgkgkgkgkgkgkgkgkg',
+            title: 'Your Wheat stock has dropped below 25 kg ',
             description: 'Increase your most sold product',
             timestamp: getCurrentTimestamp(),
             image: '/images/image1.svg',
@@ -90,7 +90,7 @@ const Notifications = () => {
         {
             id: '6',
             type: 'rejection',
-            title: 'Your request for rice ha been rejected aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            title: 'Your request for rice ha been rejected',
             description: 'The request of wheat Product has been rejected',
             timestamp: getCurrentTimestamp(),
             image: '',
@@ -120,7 +120,7 @@ const Notifications = () => {
         {
             id: '9',
             type: 'others',
-            title: 'Your Wheat stock has dropped below 25 kg kgkgkgkgkgkgkgkgkgkgkgkgkgkg',
+            title: 'Your Wheat stock has dropped below 25 kg',
             description: 'Increase your most sold product',
             timestamp: getCurrentTimestamp(),
             image: '/images/image1.svg',
@@ -140,7 +140,7 @@ const Notifications = () => {
         {
             id: '11',
             type: 'rejection',
-            title: 'Your request for rice ha been rejected aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            title: 'Your request for rice ha been rejected ',
             description: 'The request of wheat Product has been rejected',
             timestamp: getCurrentTimestamp(),
             image: '',
@@ -149,7 +149,7 @@ const Notifications = () => {
         {
             id: '12',
             type: 'rejection',
-            title: 'Your request for rice ha been rejected aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            title: 'Your request for rice ha been rejected ',
             description: 'The request of wheat Product has been rejected',
             timestamp: getCurrentTimestamp(),
             image: '',
@@ -158,7 +158,7 @@ const Notifications = () => {
             id: '13',
             type: 'others',
             title: 'You have a new Order.',
-            description: '100kg wheat order by Basit Ali',
+            description: '100kg wheat order by Ali',
             timestamp: getCurrentTimestamp(),
             image: '/images/image1.svg',
             isRead: false,
@@ -187,7 +187,7 @@ const Notifications = () => {
         {
             id: '16',
             type: 'others',
-            title: 'Your Wheat stock has dropped below 25 kg kgkgkgkgkgkgkgkgkgkgkgkgkgkg',
+            title: 'Your Wheat stock has dropped below 25 kg ',
             description: 'Increase your most sold product',
             timestamp: getCurrentTimestamp(),
             image: '/images/image1.svg',

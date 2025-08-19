@@ -14,8 +14,9 @@ import Layout from './Layout/Layout';
 import { CartProvider } from './Context/CartContext';
 import { AuthProvider } from './Context/AuthContext';
 import ProtectedRoute from './Components/ProtectedRoute';
-import LoginForm from './Components/AuthPageComponenets/LoginForm';
-import SignupForm from './Components/AuthPageComponenets/SignupForm';
+import LoginForm from './Components/AuthPageComponents/LoginForm';
+import SignupForm from './Components/AuthPageComponents/SignupForm';
+
 
 const App: React.FC = () => {
   return (
@@ -24,7 +25,7 @@ const App: React.FC = () => {
         <BrowserRouter>
           <Routes>
 
-            {/* routes without sidebar or top panel */}
+            {/* routes without sidebar and top panel */}
             <Route path="/" element={<Navigate to="/AuthPage" />} />
             <Route path="/AuthPage" element={<AuthPage />} />
             <Route path="/AuthPage/LoginForm" element={<LoginForm />} />
@@ -33,7 +34,7 @@ const App: React.FC = () => {
 
             <Route element={<ProtectedRoute />}>
 
-              {/* routes with sidebar and the top panel */}
+              {/* routes with sidebar and  top panel */}
               <Route element={<Layout />} >
 
                 <Route path="/Dashboard" element={<Dashboard />} />
