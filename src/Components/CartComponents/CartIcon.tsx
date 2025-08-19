@@ -16,17 +16,12 @@ const CartIcon: React.FC = () => {
             <div className="relative">
 
                 <button
-
                     onClick={openCart}
                     className="bg-Golden text-white p-4 rounded-full shadow shadow-2xl/30 shadow-gray-300 h-[64px] w-[64px] transform 
                         hover:scale-95 active:scale-85 cursor-pointer transition-transform duration-200 ease-in-out"
-
                 >
                     <ShoppingCart size={32} />
-
-
                     {cart.length > 0 && (
-
                         <span className="absolute -top-0 -right-1 bg-white text-Golden text-[14px] 
                         font-bold px-2 py-0.5 rounded-full shadow-2xl">
 

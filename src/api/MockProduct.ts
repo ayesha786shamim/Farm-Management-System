@@ -314,7 +314,7 @@ const mockFarmProducts: Product[] = [
 
 
 
-export const getProducts = async (): Promise<Product[]> => {
+export const getProducts = async () => {
 
   return new Promise((resolve) => {
     setTimeout(() => {

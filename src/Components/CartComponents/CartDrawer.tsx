@@ -80,8 +80,10 @@ const CartDrawer: React.FC = () => {
                             </div>
                         )}
                     </div>
+                </div>
 
-                    {/* Footer */}
+                {/* Footer */}
+                <div>
                     {cart.length > 0 && (
                         <div className=" sticky absolute p-4 space-y-3 bg-white border-t border-gray-200  
                         bottom-0 rounded-bl-[26px]">
@@ -91,14 +93,14 @@ const CartDrawer: React.FC = () => {
                                 <div className="pb-8 flex justify-between">
 
                                     <span className='text-[16px] '>Sub total</span>
-                                    <span className='text-[14px]'>PKR. {subtotal}</span>
+                                    <span className='text-[14px]'>PKR. {subtotal.toFixed(2)}</span>
 
                                 </div>
 
                                 <div className="flex justify-between font-Montserrat font-bold text-[20px] text-Black">
 
                                     <span className='text-[16px]'>Total</span>
-                                    <span className='text-[20px]'>PKR.  {total}</span>
+                                    <span className='text-[20px]'>PKR.  {total.toFixed(2)}</span>
 
                                 </div>
 
@@ -132,6 +134,7 @@ const CartDrawer: React.FC = () => {
                         </div>
                     )}
                 </div>
+                
             </div>
         </div>
     );

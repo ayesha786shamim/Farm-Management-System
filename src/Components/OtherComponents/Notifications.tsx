@@ -252,7 +252,6 @@ const Notifications = () => {
                 <div className="divide-y divide-Ice_Blue shadow-lg">
 
                     {/* {notifications.map((notification) => ( */}
-
                     {notificationDisplayed.map((notification) => (
 
                         <div
@@ -331,13 +330,13 @@ const Notifications = () => {
                             </div>
                         </div>
                     ))}
+
                 </div>
 
             </div>
 
 
             {/* Show All Button */}
-
             {!showAll && (
 
                 <div className=" px-6 py-2 bg-[#F8F7EF] border-t shadow-xl flex items-center justify-center">

@@ -90,7 +90,7 @@ const Sidebar: React.FC = () => {
 
                         {sidebarItems.map((item) => (
 
-                            <NavItem name={item.name} icon={item.icon} path={item.path} />
+                            <NavItem key={item.name} name={item.name} icon={item.icon} path={item.path} />
 
                         ))}
 

@@ -39,7 +39,7 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
     return (
         <div className="bg-transparent px-6 pt-6 pb-3">
 
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full sm-w-auto flex justify-between items-center">
 
 
                 {/*notification and User Profile  section */}
@@ -56,7 +56,7 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
                                     className="p-2 rounded-full bg-white border-2 border-Ice_Blue 
                                     text-Forest_Green hover:scale-105 active:scale-95 
                                     transition-transform duration-200 ease-in-out
-                                    transition-colors relative"
+                                    transition-colors relative "
                                 >
                                     <Bell className="w-[15px] h-[15px] text-current" />
                                     <div className="absolute top-0 right-0 translate-x-1/8 -translate-y-1/8 w-2 h-2 bg-Forest_Green rounded-full"></div>
@@ -78,7 +78,7 @@ const TopPanel: React.FC<TopPanelProps> = ({ title, showNotification, showUserIn
 
 
                     {showVerticalBar ? (
-                        <div className="h-[30px] border-l-2 border-[#D9D9D9] mx-3"></div>
+                        <div className="hidden md:block h-[30px] border-l-2 border-[#D9D9D9] mx-3"></div>
                     ) : (<div className=" mx-3"></div>)}
 
 

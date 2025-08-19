@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
-// import { getProducts, Product } from '../api/ProductApi';
-// import { getProducts, Product } from '../../api/MockProduct';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import '../../Styles/Product-style.css';
 import { Product } from '../../services/productsService';
@@ -61,6 +59,7 @@ const NewArrival: React.FC<NewArrivalProps> = ({ products }) => {
                             style={{ width: '20%' }}
                         >
                             <ProductCard
+
                                 id={product.id}
                                 title={product.title}
                                 price={product.price}

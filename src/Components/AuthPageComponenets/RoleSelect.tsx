@@ -1,20 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { useAuth } from '../../Context/AuthContext';
+
 
 const RoleSelect: React.FC = () => {
     const navigate = useNavigate();
-    const { login } = useAuth();
+
 
     const handleRole = (role: "user" | "admin") => {
 
         if (role === "user") {
-            login();
-            navigate("/MarketPlace");
+            navigate("/AuthPage/LoginForm");
         } else {
-            login();
-            navigate("/MarketPlaceAdmin");
+            navigate("/AuthPage/LoginForm");
         }
     };
 
@@ -36,7 +34,7 @@ const RoleSelect: React.FC = () => {
 
                 {/* Role Buttons */}
                 <div className="space-y-4">
-                    {/* User Role */}
+
                     <button
                         onClick={() => handleRole("user")}
                         className="w-full group relative overflow-hidden bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
@@ -48,7 +46,6 @@ const RoleSelect: React.FC = () => {
                         </div>
                     </button>
 
-                    {/* Admin Role */}
                     <button
                         onClick={() => handleRole("admin")}
                         className="w-full group relative overflow-hidden bg-slate-700 hover:bg-slate-800 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"

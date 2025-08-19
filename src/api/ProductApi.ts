@@ -7,7 +7,7 @@ export interface Product {
   category: string;
 }
 
-export const getProducts = async (): Promise<Product[]> => 
+export const getProducts = async () => 
   {
   const responce = await fetch('https://fakestoreapi.com/products');
 

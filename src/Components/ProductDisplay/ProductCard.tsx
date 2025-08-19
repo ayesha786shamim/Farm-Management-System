@@ -1,44 +1,38 @@
-import React, { useContext } from 'react';
-import { Eye, Plus } from "lucide-react";
+import React, { useState } from 'react';
+import { Eye, Plus, Trash, SquarePenIcon } from "lucide-react";
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import '../../Styles/Product-style.css';
-import { CartContext } from '../../Context/CartContext';
-import { Product } from '../../services/productsService';
+import { useCart } from '../../Context/CartContext';
+import { Product, deleteProduct, updatePrice } from '../../services/productsService';
 
 
 interface ProductCardProps extends Product {
 
     fromCategoryComponent?: boolean;
+    onDelete?: (id: number) => void;
+    onUpdate?: (id: number, newPrice: number) => void;
 
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, description, category, features, fromCategoryComponent, }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, description, category, features, fromCategoryComponent, onDelete, onUpdate, }) => {
 
     const navigate = useNavigate();
 
-    const cartContext = useContext(CartContext);
 
-    if (!cartContext) {
-
-        throw new Error("CartContext not found.");
-
-    }
-
-    const { addToCart } = cartContext;
+    const { addToCart } = useCart();
 
 
     const handlePlusClick = () => {
 
-        const cartProduct : Product = { id, title, price, images, description, category, features };
+        const cartProduct: Product = { id, title, price, images, description, category, features };
 
-        addToCart( cartProduct , 1);
+        addToCart(cartProduct, 1);
 
     };
 
-
     const handleAddToCartClick = () => {
 
-        const productForDetail : Product = { id, title, price, images, description, category, features };
+        const productForDetail: Product = { id, title, price, images, description, category, features };
 
         navigate(
             {
@@ -50,6 +44,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, des
             { state: productForDetail }
         );
     };
+
+    const handleDeleteClick = async () => {
+        const success = await deleteProduct(id)
+        if (success && onDelete) {
+            onDelete(id)
+        }
+    }
+
+    const handleUpdatePriceClick = async () => {
+
+        const newPrice = 2000;
+
+        const updatedProduct = await updatePrice(id, newPrice)
+
+        if (updatedProduct && onUpdate) {
+            onUpdate(id, newPrice);
+        }
+    }
 
 
     return (
@@ -89,14 +101,46 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, images, des
 
 
             {/* Eye Icon */}
-            <div className="absolute top-2.5 right-2.5 w-6 h-6 
+            {fromCategoryComponent ? (
+                <div className="absolute top-2.5 right-2.5 w-6 h-6 
                 bg-white rounded-full border border-Forest_Green 
                 flex items-center justify-center cursor-pointer 
-                hover:bg-gray-50 transition-colors shadow-md">
+                hover:bg-gray-50 transition-colors shadow-md"
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        handleDeleteClick();
+                    }}
+                >
+                    <Trash size={14} className="text-Forest_Green " />
+                </div>
+            ) : (
+                <div className="absolute top-2.5 right-2.5 w-6 h-6 
+                bg-white rounded-full border border-Forest_Green 
+                flex items-center justify-center cursor-pointer 
+                hover:bg-gray-50 transition-colors shadow-md group-hover:opacity-0"
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        handleDeleteClick();
+                    }}
+                >
+                    <Trash size={14} className="text-Forest_Green " />
+                </div>
+            )}
 
-                <Eye size={14} className="text-Forest_Green " />
-
-            </div>
+            {/* Update Icon */}
+            {fromCategoryComponent && (
+                <div className="absolute top-20 right-2.5 w-6 h-6 
+                bg-white rounded-full border border-Forest_Green 
+                flex items-center justify-center cursor-pointer 
+                hover:bg-gray-50 transition-colors shadow-md"
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        handleUpdatePriceClick();
+                    }}
+                >
+                    <SquarePenIcon size={14} className="text-Forest_Green " />
+                </div>
+            )}
 
 
             {/* Image */}

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
-// import { getProducts, Product } from '../api/ProductApi';
-// import { getProducts, Product } from '../../api/MockProduct';
 import '../../Styles/Product-style.css';
 import { ArrowRight } from 'lucide-react';
 import { Product } from '../../services/productsService';
+import { addProduct } from '../../services/productsService';
 
 interface CategoriesProps {
     products: Product[];
@@ -20,19 +19,84 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
 
     const [activeCategory, setActiveCategory] = useState<string>('All');
 
+    const [productList, setProductList] = useState<Product[]>(products);
+
+    const [newProductId, setNewProductId] = useState<number>(100);
+
+
     const handleLoadMore = () => {
 
         setVisibleCount(products.length);
 
     };
 
+    const handleDelete = (id: number) => {
+
+        setProductList((prevList) =>
+            prevList.filter((product) =>
+                product.id !== id
+            )
+        )
+    }
+
+    const handleUpdate = (id: number, newPrice: number) => {
+
+        setProductList((prevList) =>
+            prevList.map((product) => {
+                if (product.id === id) {
+                    return { ...product, price: newPrice };
+                }
+                return product;
+            })
+        );
+    };
+
+
+    const handleAddNewProduct = async () => {
+        console.log("product Id ", newProductId);
+
+        const newProduct: Product = {
+            id: newProductId,
+            title: "New Product",
+            price: 1500,
+            images: ["/images/Urea1.svg"],
+            description: "This is a New product",
+            category: "Fertilizer",
+            features: []
+        };
+
+        const addedProduct = await addProduct(newProduct)
+        if (addedProduct) {
+            const productWithCustomId = { ...addedProduct, id: newProductId };
+
+            setProductList((prevProductList) =>
+                // [ ...prevProductList,addedProduct,]
+                [productWithCustomId, ...prevProductList]
+
+            );
+            setNewProductId((NewProductId) =>
+                NewProductId + 1
+            );
+        }
+    };
+
+    // const filteredProducts =
+
+    //     activeCategory === 'All'
+
+    //         ? products
+
+    //         : products.filter((product) =>
+    //             product.category === activeCategory
+    //         );
+
+
+
     const filteredProducts =
 
         activeCategory === 'All'
-
-            ? products
-
-            : products.filter((product) =>
+            ? productList
+            : productList.filter((product) =>
                 product.category === activeCategory
             );
 
@@ -71,25 +135,45 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                 </div>
             </div>
 
+            {/* Add Product Button */}
+            <div className="flex justify-center mb-4">
+                <button
+                    onClick={handleAddNewProduct}
+                    className="px-6 py-2 bg-Forest_Green text-white rounded-3xl hover:bg-green
+                    hover:scale-105 active:scale-95"
+                >
+                    Add Product
+                </button>
+            </div>
+
 
             {/* Product card Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
 
-                {visibleProducts.map((product) => (
+                {visibleProducts.length > 0 ? (
 
-                    <ProductCard
-                        id={product.id}
-                        title={product.title}
-                        price={product.price}
-                        // image={product.image}
-                        images={product.images}
-                        description={product.description}
-                        category={product.category}
-                        features={product.features}
+                    visibleProducts.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            id={product.id}
+                            title={product.title}
+                            price={product.price}
+                            // image={product.image}
+                            images={product.images}
+                            description={product.description}
+                            category={product.category}
+                            features={product.features}
 
-                        fromCategoryComponent={true}
-                    />
-                ))}
+                            fromCategoryComponent={true}
+                            onDelete={handleDelete}
+                            onUpdate={handleUpdate}
+                        />
+                    ))
+                ) : (
+                    <h1 className='col-span-5 flex justify-center font-Poppins text-[20px] flex items-center font-bold text-Forest_Green'>
+                        NO PRODUCTS FOUND
+                    </h1>
+                )}
             </div>
 
 
@@ -106,6 +190,7 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
                     </button>
                 </div>
             )}
+
         </div >
     );
 };

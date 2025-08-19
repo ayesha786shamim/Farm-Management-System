@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { CartContext } from '../../Context/CartContext';
+import { useCart } from '../../Context/CartContext';
 // import { Product } from '../../api/MockProduct';
 import { Product } from '../../services/productsService';
+
 
 interface ProductInfoProps extends Product { }
 
@@ -11,27 +12,17 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, images, des
 
     const [quantity, setQuantity] = useState<number>(1);
 
-    const cartContext = useContext(CartContext);
-
-    if (!cartContext) {
-
-        throw new Error("CartContext not found.");
-
-    }
-
-    const { addToCart } = cartContext;
-
-
+    const { addToCart } = useCart();
 
 
     const handleIncrement = () =>
 
-        setQuantity((prev) => (prev + 1));
+        setQuantity((prevQuantity) => (prevQuantity + 1));
 
     const handleDecrement = () =>
 
-        setQuantity(prev => (prev > 1
-            ? prev - 1 : 1));
+        setQuantity(prevQuantity => (prevQuantity > 1
+            ? prevQuantity - 1 : 1));
 
 
     const handleAddToCart = () => {
@@ -141,6 +132,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ id, title, price, images, des
                     />
                 )}
             </div>
+            
         </div>
     );
 };
