@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import '../../Styles/Product-style.css';
 import { ArrowRight } from 'lucide-react';
@@ -79,17 +79,6 @@ const Categories: React.FC<CategoriesProps> = ({ products }) => {
             );
         }
     };
-
-    // const filteredProducts =
-
-    //     activeCategory === 'All'
-
-    //         ? products
-
-    //         : products.filter((product) =>
-    //             product.category === activeCategory
-    //         );
-
 
 
     const filteredProducts =

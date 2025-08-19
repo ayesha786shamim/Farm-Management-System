@@ -9,7 +9,7 @@ const SignupForm: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [role, setRole] = useState('user');
+    const [role] = useState('user');
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();

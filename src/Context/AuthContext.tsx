@@ -12,15 +12,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-
-        // return localStorage.getItem("isAuthenticated") === "true";
         return Cookies.get("isAuthenticated") === "true";
     });
 
     const login = (token: string) => {
         setIsAuthenticated(true);
-        // localStorage.setItem("isAuthenticated", "true");
-        // localStorage.setItem("token", token);
         Cookies.set("isAuthenticated", "true");
         Cookies.set("token", token);
     };
@@ -28,8 +24,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const logout = () => {
         setIsAuthenticated(false);
-        // localStorage.removeItem("isAuthenticated");
-        // localStorage.removeItem("token");
         Cookies.remove("isAuthenticated");
         Cookies.remove("token");
 

@@ -8,7 +8,6 @@ import Lands from './Pages/Lands';
 import ProductDetail from './Pages/ProductDetail';
 import Checkout from './Components/OtherComponents/CheckoutInformation';
 import OrderHistory from './Pages/OrderHistory';
-import RoleSelection from './Pages/RoleSelection';
 import AuthPage from './Pages/AuthPage';
 import Inventory from './Pages/Inventory';
 import Layout from './Layout/Layout';
@@ -30,8 +29,6 @@ const App: React.FC = () => {
             <Route path="/AuthPage" element={<AuthPage />} />
             <Route path="/AuthPage/LoginForm" element={<LoginForm />} />
             <Route path="/AuthPage/SignupForm" element={<SignupForm />} />
-
-            {/* <Route path="/" element={<Navigate to="/MarketPlace" />} /> */}
 
 
             <Route element={<ProtectedRoute />}>

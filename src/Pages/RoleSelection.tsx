@@ -9,10 +9,7 @@ const RoleSelection: React.FC = () => {
     return (
         <div className="flex flex-col h-full w-full bg-transparent">
 
-
-            {/* Role Selection */}
             <RoleSelect />
-
 
         </div>
     );

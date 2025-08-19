@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../../Context/CartContext';
-// import { Product } from '../../api/MockProduct';
 import { Product } from '../../services/productsService';
 
 

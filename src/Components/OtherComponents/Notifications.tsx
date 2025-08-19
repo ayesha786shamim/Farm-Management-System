@@ -251,7 +251,6 @@ const Notifications = () => {
                 {/* Notifications List */}
                 <div className="divide-y divide-Ice_Blue shadow-lg">
 
-                    {/* {notifications.map((notification) => ( */}
                     {notificationDisplayed.map((notification) => (
 
                         <div

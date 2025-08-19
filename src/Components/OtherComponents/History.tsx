@@ -146,9 +146,9 @@ const History: React.FC = () => {
 
     const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-    //define the starting index of the page
+
     const startIndex = (currentPage - 1) * itemsPerPage;
-    //define the ending index of the page
+
     const endIndex = startIndex + itemsPerPage;
 
     const currentOrders = filteredProducts.slice(startIndex, endIndex);

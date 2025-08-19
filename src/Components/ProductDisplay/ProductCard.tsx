@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Eye, Plus, Trash, SquarePenIcon } from "lucide-react";
+import React from 'react';
+import {  Plus, Trash, SquarePenIcon } from "lucide-react";
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import '../../Styles/Product-style.css';
 import { useCart } from '../../Context/CartContext';
